@@ -42,6 +42,7 @@
     }
     .lang-btn:first-child { border-radius: 4px 0 0 4px; }
     .lang-btn:last-child  { border-radius: 0 4px 4px 0; border-left: none; }
+    .lang-btn:not(:first-child) { border-left: none; }
     .lang-btn.active { background: var(--green); border-color: var(--green); color: var(--navy); }
 
     /* ── HERO ── */
@@ -319,11 +320,16 @@
     body.lang-en [data-lang="en"].inline { display: inline; }
     body.lang-en [data-lang="en"].flex { display: flex; }
     body.lang-en [data-lang="en"].grid { display: grid; }
+    body.lang-pt [data-lang="pt"] { display: block; }
+    body.lang-pt [data-lang="pt"].inline { display: inline; }
+    body.lang-pt [data-lang="pt"].flex { display: flex; }
+    body.lang-pt [data-lang="pt"].grid { display: grid; }
 
     /* inline text spans handled differently */
     span[data-lang] { display: none; }
     body.lang-es span[data-lang="es"] { display: inline; }
     body.lang-en span[data-lang="en"] { display: inline; }
+    body.lang-pt span[data-lang="pt"] { display: inline; }
   </style>
 </head>
 <body class="lang-es">
@@ -332,6 +338,7 @@
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('es')">ES</button>
   <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('pt')">PT</button>
 </div>
 
 <!-- ══ HERO ══ -->
@@ -340,29 +347,35 @@
   <div class="hero-grid"></div>
   <div class="hero-content">
     <div class="tagline">MB Apps S.A.S. — Floridablanca, Colombia</div>
+
     <h1>
       <span data-lang="es">Apps móviles<br>que importan.</span>
       <span data-lang="en">Mobile apps<br>that <span style="color:var(--green)">matter.</span></span>
+      <span data-lang="pt">Apps móveis<br>que <span style="color:var(--green)">importam.</span></span>
     </h1>
     <p class="hero-desc">
       <span data-lang="es">Desarrollamos aplicaciones móviles enfocadas en salud personal y gestión empresarial, construidas con tecnología de vanguardia.</span>
       <span data-lang="en">We build mobile applications focused on personal health and business management, powered by cutting-edge technology.</span>
+      <span data-lang="pt">Desenvolvemos aplicativos móveis focados em saúde pessoal e gestão empresarial, construídos com tecnologia de ponta.</span>
     </p>
     <div>
       <a href="#apps" class="btn btn-primary">
         <span data-lang="es">Ver nuestras apps</span>
         <span data-lang="en">Our apps</span>
+        <span data-lang="pt">Nossos apps</span>
         ↓
       </a>
       <a href="#contact" class="btn btn-ghost">
         <span data-lang="es">Contacto</span>
         <span data-lang="en">Contact</span>
+        <span data-lang="pt">Contato</span>
       </a>
     </div>
   </div>
   <div class="scroll-hint">
     <span data-lang="es">Explorar</span>
     <span data-lang="en">Explore</span>
+    <span data-lang="pt">Explorar</span>
   </div>
 </header>
 
@@ -373,23 +386,27 @@
       <p class="section-label">
         <span data-lang="es">Quiénes somos</span>
         <span data-lang="en">About us</span>
+        <span data-lang="pt">Quem somos</span>
       </p>
       <h2>
         <span data-lang="es">Tecnología colombiana para el mundo</span>
         <span data-lang="en">Colombian technology for the world</span>
+        <span data-lang="pt">Tecnologia colombiana para o mundo</span>
       </h2>
       <p class="section-sub" style="margin-bottom:0;">
         <span data-lang="es">MB Apps S.A.S. es una empresa de desarrollo de software móvil con sede en Floridablanca, Santander. Creamos soluciones digitales que simplifican la vida de las personas, combinando inteligencia artificial, diseño intuitivo y tecnología moderna.</span>
         <span data-lang="en">MB Apps S.A.S. is a mobile software development company headquartered in Floridablanca, Santander. We create digital solutions that simplify people's lives, combining artificial intelligence, intuitive design, and modern technology.</span>
+        <span data-lang="pt">MB Apps S.A.S. é uma empresa de desenvolvimento de software móvel sediada em Floridablanca, Santander. Criamos soluções digitais que simplificam a vida das pessoas, combinando inteligência artificial, design intuitivo e tecnologia moderna.</span>
       </p>
       <div class="about-stats">
         <div class="stat-card">
           <div class="stat-num">1</div>
-          <div class="stat-label"><span data-lang="es">App en producción</span><span data-lang="en">App in production</span></div>
+          <div class="stat-label"><span data-lang="es">App en producción</span><span data-lang="en">App in production</span><span data-lang="pt">App em produção</span></div>
+
         </div>
         <div class="stat-card">
           <div class="stat-num">2026</div>
-          <div class="stat-label"><span data-lang="es">Año de fundación</span><span data-lang="en">Founded</span></div>
+          <div class="stat-label"><span data-lang="es">Año de fundación</span><span data-lang="en">Founded</span><span data-lang="pt">Fundada em</span></div>
         </div>
         <div class="stat-card">
           <div class="stat-num">AI</div>
@@ -397,7 +414,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-num">🇨🇴</div>
-          <div class="stat-label"><span data-lang="es">Hecho en Colombia</span><span data-lang="en">Made in Colombia</span></div>
+          <div class="stat-label"><span data-lang="es">Hecho en Colombia</span><span data-lang="en">Made in Colombia</span><span data-lang="pt">Feito na Colômbia</span></div>
         </div>
       </div>
     </div>
@@ -405,22 +422,22 @@
       <div class="value-item">
         <div class="value-icon">🎯</div>
         <div>
-          <div class="value-title"><span data-lang="es">Enfoque en el usuario</span><span data-lang="en">User-first</span></div>
-          <div class="value-desc"><span data-lang="es">Diseñamos cada pantalla pensando en quien la usa, no en quien la construye.</span><span data-lang="en">Every screen is designed for the people who use it, not the people who build it.</span></div>
+          <div class="value-title"><span data-lang="es">Enfoque en el usuario</span><span data-lang="en">User-first</span><span data-lang="pt">Foco no usuário</span></div>
+          <div class="value-desc"><span data-lang="es">Diseñamos cada pantalla pensando en quien la usa, no en quien la construye.</span><span data-lang="en">Every screen is designed for the people who use it, not the people who build it.</span><span data-lang="pt">Cada tela é projetada para quem a usa, não para quem a constrói.</span></div>
         </div>
       </div>
       <div class="value-item">
         <div class="value-icon">🤖</div>
         <div>
-          <div class="value-title"><span data-lang="es">Inteligencia Artificial integrada</span><span data-lang="en">Built-in AI</span></div>
-          <div class="value-desc"><span data-lang="es">Usamos Gemini AI para interpretar, corregir y enriquecer la información del usuario en tiempo real.</span><span data-lang="en">We use Gemini AI to interpret, correct, and enrich user data in real time.</span></div>
+          <div class="value-title"><span data-lang="es">Inteligencia Artificial integrada</span><span data-lang="en">Built-in AI</span><span data-lang="pt">IA integrada</span></div>
+          <div class="value-desc"><span data-lang="es">Usamos Gemini AI para interpretar, corregir y enriquecer la información del usuario en tiempo real.</span><span data-lang="en">We use Gemini AI to interpret, correct, and enrich user data in real time.</span><span data-lang="pt">Usamos Gemini AI para interpretar, corrigir e enriquecer as informações do usuário em tempo real.</span></div>
         </div>
       </div>
       <div class="value-item">
         <div class="value-icon">🔒</div>
         <div>
-          <div class="value-title"><span data-lang="es">Privacidad y seguridad</span><span data-lang="en">Privacy & security</span></div>
-          <div class="value-desc"><span data-lang="es">Los datos de nuestros usuarios son suyos. Nunca los vendemos ni compartimos con terceros.</span><span data-lang="en">Our users' data belongs to them. We never sell or share it with third parties.</span></div>
+          <div class="value-title"><span data-lang="es">Privacidad y seguridad</span><span data-lang="en">Privacy & security</span><span data-lang="pt">Privacidade e segurança</span></div>
+          <div class="value-desc"><span data-lang="es">Los datos de nuestros usuarios son suyos. Nunca los vendemos ni compartimos con terceros.</span><span data-lang="en">Our users' data belongs to them. We never sell or share it with third parties.</span><span data-lang="pt">Os dados dos nossos usuários pertencem a eles. Nunca os vendemos nem compartilhamos com terceiros.</span></div>
         </div>
       </div>
     </div>
@@ -432,14 +449,17 @@
   <p class="section-label">
     <span data-lang="es">Nuestras aplicaciones</span>
     <span data-lang="en">Our applications</span>
+    <span data-lang="pt">Nossos aplicativos</span>
   </p>
   <h2>
     <span data-lang="es">Lo que construimos</span>
     <span data-lang="en">What we build</span>
+    <span data-lang="pt">O que construímos</span>
   </h2>
   <p class="section-sub">
     <span data-lang="es">Aplicaciones móviles para Android diseñadas para resolver problemas reales.</span>
     <span data-lang="en">Android mobile applications designed to solve real-world problems.</span>
+    <span data-lang="pt">Aplicativos móveis para Android projetados para resolver problemas reais.</span>
   </p>
 
   <div class="apps-grid">
@@ -449,19 +469,21 @@
         <span class="app-badge badge-live">
           <span data-lang="es">Disponible en Google Play</span>
           <span data-lang="en">Available on Google Play</span>
+          <span data-lang="pt">Disponível no Google Play</span>
         </span>
         <div class="app-icon">💊</div>
         <div class="app-name">MB Apps — Health Organizer</div>
         <p class="app-desc">
           <span data-lang="es">Tu asistente personal de salud. Registra medicamentos, medidas corporales, exámenes médicos y citas, todo en un solo lugar con inteligencia artificial.</span>
           <span data-lang="en">Your personal health assistant. Track medications, body measurements, medical exams, and appointments — all in one place, powered by AI.</span>
+          <span data-lang="pt">Seu assistente pessoal de saúde. Registre medicamentos, medidas corporais, exames médicos e consultas, tudo em um só lugar com inteligência artificial.</span>
         </p>
         <ul class="app-features">
-          <li><span data-lang="es">Registro de medicamentos con recordatorios</span><span data-lang="en">Medication tracking with reminders</span></li>
-          <li><span data-lang="es">Análisis de exámenes con Gemini AI</span><span data-lang="en">Exam analysis powered by Gemini AI</span></li>
-          <li><span data-lang="es">Directorio médico y citas con Google Calendar</span><span data-lang="en">Medical directory and Google Calendar appointments</span></li>
-          <li><span data-lang="es">Seguimiento de medidas corporales</span><span data-lang="en">Body measurement tracking</span></li>
-          <li><span data-lang="es">Contactos de emergencia y ambulancia</span><span data-lang="en">Emergency contacts and ambulance quick-dial</span></li>
+          <li><span data-lang="es">Registro de medicamentos con recordatorios</span><span data-lang="en">Medication tracking with reminders</span><span data-lang="pt">Registro de medicamentos com lembretes</span></li>
+          <li><span data-lang="es">Análisis de exámenes con Gemini AI</span><span data-lang="en">Exam analysis powered by Gemini AI</span><span data-lang="pt">Análise de exames com Gemini AI</span></li>
+          <li><span data-lang="es">Directorio médico y citas con Google Calendar</span><span data-lang="en">Medical directory and Google Calendar appointments</span><span data-lang="pt">Diretório médico e consultas com Google Calendar</span></li>
+          <li><span data-lang="es">Seguimiento de medidas corporales</span><span data-lang="en">Body measurement tracking</span><span data-lang="pt">Acompanhamento de medidas corporais</span></li>
+          <li><span data-lang="es">Contactos de emergencia y ambulancia</span><span data-lang="en">Emergency contacts and ambulance quick-dial</span><span data-lang="pt">Contatos de emergência e discagem rápida para ambulância</span></li>
         </ul>
       </div>
       <div class="app-visual">💊</div>
@@ -472,20 +494,23 @@
       <span class="app-badge badge-soon">
         <span data-lang="es">Próximamente</span>
         <span data-lang="en">Coming soon</span>
+        <span data-lang="pt">Em breve</span>
       </span>
       <div class="app-icon" style="background: linear-gradient(135deg,#1E3358,#2A4A7F);">📦</div>
       <div class="app-name">
         <span data-lang="es">MB Apps — Inventarios</span>
         <span data-lang="en">MB Apps — Inventory</span>
+        <span data-lang="pt">MB Apps — Inventário</span>
       </div>
       <p class="app-desc">
         <span data-lang="es">Gestión de inventario inteligente para pequeñas y medianas empresas. Control de stock, alertas de reabastecimiento y reportes en tiempo real.</span>
         <span data-lang="en">Smart inventory management for small and medium businesses. Stock control, restocking alerts, and real-time reports.</span>
+        <span data-lang="pt">Gestão inteligente de inventário para pequenas e médias empresas. Controle de estoque, alertas de reabastecimento e relatórios em tempo real.</span>
       </p>
       <ul class="app-features">
-        <li><span data-lang="es">Control de stock en tiempo real</span><span data-lang="en">Real-time stock control</span></li>
-        <li><span data-lang="es">Alertas de reabastecimiento</span><span data-lang="en">Restocking alerts</span></li>
-        <li><span data-lang="es">Reportes y análisis</span><span data-lang="en">Reports & analytics</span></li>
+        <li><span data-lang="es">Control de stock en tiempo real</span><span data-lang="en">Real-time stock control</span><span data-lang="pt">Controle de estoque em tempo real</span></li>
+        <li><span data-lang="es">Alertas de reabastecimiento</span><span data-lang="en">Restocking alerts</span><span data-lang="pt">Alertas de reabastecimento</span></li>
+        <li><span data-lang="es">Reportes y análisis</span><span data-lang="en">Reports & analytics</span><span data-lang="pt">Relatórios e análises</span></li>
       </ul>
     </div>
   </div>
@@ -496,10 +521,12 @@
   <p class="section-label">
     <span data-lang="es">Tecnología</span>
     <span data-lang="en">Technology</span>
+    <span data-lang="pt">Tecnologia</span>
   </p>
   <h2>
     <span data-lang="es">Construido con lo mejor</span>
     <span data-lang="en">Built with the best</span>
+    <span data-lang="pt">Construído com o melhor</span>
   </h2>
   <div class="tech-grid">
     <div class="tech-pill"><div class="tech-name">FlutterFlow</div><div class="tech-role">UI / Frontend</div></div>
@@ -516,31 +543,33 @@
   <p class="section-label">
     <span data-lang="es">Contacto</span>
     <span data-lang="en">Contact</span>
+    <span data-lang="pt">Contato</span>
   </p>
   <h2>
     <span data-lang="es">Hablemos</span>
     <span data-lang="en">Let's talk</span>
+    <span data-lang="pt">Vamos conversar</span>
   </h2>
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item">
         <div class="contact-icon">📧</div>
         <div>
-          <div class="contact-label"><span data-lang="es">Correo</span><span data-lang="en">Email</span></div>
+          <div class="contact-label"><span data-lang="es">Correo</span><span data-lang="en">Email</span><span data-lang="pt">E-mail</span></div>
           <div class="contact-value"><a href="mailto:mbapps.sas@gmail.com">mbapps.sas@gmail.com</a></div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">📱</div>
         <div>
-          <div class="contact-label"><span data-lang="es">Teléfono</span><span data-lang="en">Phone</span></div>
+          <div class="contact-label"><span data-lang="es">Teléfono</span><span data-lang="en">Phone</span><span data-lang="pt">Telefone</span></div>
           <div class="contact-value">+57 315 886 7777</div>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">📍</div>
         <div>
-          <div class="contact-label"><span data-lang="es">Ubicación</span><span data-lang="en">Location</span></div>
+          <div class="contact-label"><span data-lang="es">Ubicación</span><span data-lang="en">Location</span><span data-lang="pt">Localização</span></div>
           <div class="contact-value">Floridablanca, Santander, Colombia</div>
         </div>
       </div>
@@ -558,18 +587,22 @@
       <h3>
         <span data-lang="es">Política de Privacidad</span>
         <span data-lang="en">Privacy Policy</span>
+        <span data-lang="pt">Política de Privacidade</span>
       </h3>
       <p>
         <span data-lang="es">MB Apps S.A.S. recopila únicamente la información necesaria para el funcionamiento de nuestras aplicaciones. Los datos personales de salud ingresados en MB Apps — Health Organizer son almacenados de forma segura en Firebase y son de uso exclusivo del usuario.</span>
         <span data-lang="en">MB Apps S.A.S. collects only the information necessary for the operation of our applications. Personal health data entered into MB Apps — Health Organizer is securely stored in Firebase and is for the user's exclusive use.</span>
+        <span data-lang="pt">MB Apps S.A.S. coleta apenas as informações necessárias para o funcionamento dos nossos aplicativos. Os dados pessoais de saúde inseridos no MB Apps — Health Organizer são armazenados com segurança no Firebase e são de uso exclusivo do usuário.</span>
       </p>
       <p>
         <span data-lang="es"><strong>No vendemos, compartimos ni comercializamos ningún dato personal.</strong> El usuario puede solicitar la eliminación de su cuenta y datos en cualquier momento escribiendo a mbapps.sas@gmail.com.</span>
         <span data-lang="en"><strong>We do not sell, share, or commercialize any personal data.</strong> Users may request deletion of their account and data at any time by writing to mbapps.sas@gmail.com.</span>
+        <span data-lang="pt"><strong>Não vendemos, compartilhamos nem comercializamos nenhum dado pessoal.</strong> O usuário pode solicitar a exclusão de sua conta e dados a qualquer momento escrevendo para mbapps.sas@gmail.com.</span>
       </p>
       <p>
         <span data-lang="es">Para soporte técnico o consultas sobre privacidad, contáctenos en <a href="mailto:mbapps.sas@gmail.com" style="color:var(--green)">mbapps.sas@gmail.com</a>.</span>
         <span data-lang="en">For technical support or privacy inquiries, contact us at <a href="mailto:mbapps.sas@gmail.com" style="color:var(--green)">mbapps.sas@gmail.com</a>.</span>
+        <span data-lang="pt">Para suporte técnico ou dúvidas sobre privacidade, entre em contato em <a href="mailto:mbapps.sas@gmail.com" style="color:var(--green)">mbapps.sas@gmail.com</a>.</span>
       </p>
     </div>
   </div>
