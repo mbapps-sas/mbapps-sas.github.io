@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MB Apps S.A.S. — Mobile Health & Business Apps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00C896;
+      --green-dark: #009970;
+      --navy: #0A1628;
+      --navy-mid: #112040;
+      --slate: #1E3358;
+      --white: #F5F9FF;
+      --muted: #8BA3C4;
+      --accent: #4DFFE0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── LANG SWITCHER ── */
+    .lang-bar {
+      position: fixed; top: 0; right: 0; z-index: 100;
+      display: flex; gap: 0; padding: 12px 24px;
+    }
+    .lang-btn {
+      background: none; border: 1px solid var(--muted);
+      color: var(--muted); font-family: 'Syne', sans-serif;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      padding: 6px 14px; cursor: pointer; transition: all .25s;
+    }
+    .lang-btn:first-child { border-radius: 4px 0 0 4px; }
+    .lang-btn:last-child  { border-radius: 0 4px 4px 0; border-left: none; }
+    .lang-btn.active { background: var(--green); border-color: var(--green); color: var(--navy); }
+
+    /* ── HERO ── */
+    header {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 6vw 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(0,200,150,.13) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(77,255,224,.07) 0%, transparent 60%),
+        linear-gradient(160deg, #0A1628 0%, #112040 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,200,150,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,150,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+
+    .tagline {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(11px, 1.4vw, 13px);
+      letter-spacing: .25em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .tagline::before {
+      content: ''; display: block;
+      width: 32px; height: 2px; background: var(--green);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 800; line-height: .95;
+      letter-spacing: -.03em;
+      margin-bottom: 28px;
+    }
+    h1 span { color: var(--green); }
+
+    .hero-desc {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--muted); line-height: 1.7;
+      max-width: 540px; margin-bottom: 44px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px; border-radius: 6px;
+      font-family: 'Syne', sans-serif; font-size: 14px;
+      font-weight: 600; letter-spacing: .06em;
+      text-decoration: none; transition: all .25s;
+    }
+    .btn-primary {
+      background: var(--green); color: var(--navy);
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,.15); color: var(--white);
+      margin-left: 12px;
+    }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 6vw;
+      font-size: 12px; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--muted); display: flex; align-items: center; gap: 8px;
+    }
+    .scroll-hint::after {
+      content: ''; display: block; width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 6vw; }
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 16px;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 16px; line-height: 1.7;
+      max-width: 560px; margin-bottom: 60px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--navy-mid); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-top: 40px;
+    }
+    .stat-card {
+      background: rgba(0,200,150,.07);
+      border: 1px solid rgba(0,200,150,.15);
+      border-radius: 8px; padding: 24px;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px; font-weight: 800; color: var(--green);
+    }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    .about-right { display: flex; flex-direction: column; gap: 20px; }
+    .value-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.06);
+      transition: border-color .25s;
+    }
+    .value-item:hover { border-color: rgba(0,200,150,.3); }
+    .value-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: rgba(0,200,150,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .value-title { font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 4px; }
+    .value-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── APPS ── */
+    #apps { background: var(--navy); }
+    .apps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+
+    .app-card {
+      border-radius: 16px; padding: 40px;
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      transition: transform .3s, border-color .3s;
+    }
+    .app-card:hover { transform: translateY(-4px); border-color: rgba(0,200,150,.3); }
+    .app-card.featured {
+      background: linear-gradient(135deg, rgba(0,200,150,.12), rgba(0,200,150,.03));
+      border-color: rgba(0,200,150,.25);
+      grid-column: 1 / -1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+    }
+    .app-card.coming-soon {
+      background: rgba(255,255,255,.02);
+    }
+
+    .app-badge {
+      display: inline-block; padding: 4px 12px; border-radius: 20px;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .badge-live { background: rgba(0,200,150,.15); color: var(--green); }
+    .badge-soon { background: rgba(255,255,255,.07); color: var(--muted); }
+
+    .app-icon {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: linear-gradient(135deg, var(--green), #00897B);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px; margin-bottom: 20px;
+    }
+    .app-name {
+      font-family: 'Syne', sans-serif; font-size: 24px;
+      font-weight: 700; margin-bottom: 12px;
+    }
+    .app-desc { color: var(--muted); font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+
+    .app-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .app-features li {
+      font-size: 14px; color: var(--muted);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .app-features li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+
+    .app-visual {
+      background: rgba(0,0,0,.3); border-radius: 12px;
+      height: 220px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(0,200,150,.1);
+      font-size: 60px;
+    }
+
+    /* ── TECH ── */
+    #tech { background: var(--navy-mid); }
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .tech-pill {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px; padding: 16px 20px;
+      text-align: center; transition: all .25s;
+    }
+    .tech-pill:hover { border-color: var(--green); background: rgba(0,200,150,.06); }
+    .tech-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600; }
+    .tech-role { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .contact-icon { font-size: 20px; flex-shrink: 0; }
+    .contact-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .contact-value { font-size: 15px; margin-top: 2px; }
+    .contact-value a { color: var(--green); text-decoration: none; }
+    .contact-value a:hover { color: var(--accent); }
+
+    .privacy-box {
+      background: rgba(0,200,150,.05);
+      border: 1px solid rgba(0,200,150,.15);
+      border-radius: 12px; padding: 32px;
+    }
+    .privacy-box h3 {
+      font-family: 'Syne', sans-serif; font-size: 18px;
+      font-weight: 700; margin-bottom: 16px;
+    }
+    .privacy-box p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+    .privacy-box p:last-child { margin-bottom: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060D1A; padding: 32px 6vw;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-brand { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .about-grid, .apps-grid, .contact-grid { grid-template-columns: 1fr; }
+      .app-card.featured { grid-column: 1; grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content > * {
+      animation: fadeUp .7s ease both;
+    }
+    .hero-content > *:nth-child(1) { animation-delay: .1s; }
+    .hero-content > *:nth-child(2) { animation-delay: .25s; }
+    .hero-content > *:nth-child(3) { animation-delay: .4s; }
+    .hero-content > *:nth-child(4) { animation-delay: .55s; }
+
+    /* ── LANG DISPLAY ── */
+    [data-lang] { display: none; }
+    body.lang-es [data-lang="es"] { display: block; }
+    body.lang-es [data-lang="es"].inline { display: inline; }
+    body.lang-es [data-lang="es"].flex { display: flex; }
+    body.lang-es [data-lang="es"].grid { display: grid; }
+    body.lang-en [data-lang="en"] { display: block; }
+    body.lang-en [data-lang="en"].inline { display: inline; }
+    body.lang-en [data-lang="en"].flex { display: flex; }
+    body.lang-en [data-lang="en"].grid { display: grid; }
+
+    /* inline text spans handled differently */
+    span[data-lang] { display: none; }
+    body.lang-es span[data-lang="es"] { display: inline; }
+    body.lang-en span[data-lang="en"] { display: inline; }
+  </style>
+</head>
+<body class="lang-es">
+
+<!-- Lang switcher -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- ══ HERO ══ -->
+<header>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="tagline">MB Apps S.A.S. — Floridablanca, Colombia</div>
+    <h1>
+      <span data-lang="es">Apps móviles<br>que importan.</span>
+      <span data-lang="en">Mobile apps<br>that <span style="color:var(--green)">matter.</span></span>
+    </h1>
+    <p class="hero-desc">
+      <span data-lang="es">Desarrollamos aplicaciones móviles enfocadas en salud personal y gestión empresarial, construidas con tecnología de vanguardia.</span>
+      <span data-lang="en">We build mobile applications focused on personal health and business management, powered by cutting-edge technology.</span>
+    </p>
+    <div>
+      <a href="#apps" class="btn btn-primary">
+        <span data-lang="es">Ver nuestras apps</span>
+        <span data-lang="en">Our apps</span>
+        ↓
+      </a>
+      <a href="#contact" class="btn btn-ghost">
+        <span data-lang="es">Contacto</span>
+        <span data-lang="en">Contact</span>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span data-lang="es">Explorar</span>
+    <span data-lang="en">Explore</span>
+  </div>
+</header>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">
+        <span data-lang="es">Quiénes somos</span>
+        <span data-lang="en">About us</span>
+      </p>
+      <h2>
+        <span data-lang="es">Tecnología colombiana para el mundo</span>
+        <span data-lang="en">Colombian technology for the world</span>
+      </h2>
+      <p class="section-sub" style="margin-bottom:0;">
+        <span data-lang="es">MB Apps S.A.S. es una empresa de desarrollo de software móvil con sede en Floridablanca, Santander. Creamos soluciones digitales que simplifican la vida de las personas, combinando inteligencia artificial, diseño intuitivo y tecnología moderna.</span>
+        <span data-lang="en">MB Apps S.A.S. is a mobile software development company headquartered in Floridablanca, Santander. We create digital solutions that simplify people's lives, combining artificial intelligence, intuitive design, and modern technology.</span>
+      </p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label"><span data-lang="es">App en producción</span><span data-lang="en">App in production</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2026</div>
+          <div class="stat-label"><span data-lang="es">Año de fundación</span><span data-lang="en">Founded</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">AI</div>
+          <div class="stat-label"><span data-lang="es">Powered by Gemini</span><span data-lang="en">Powered by Gemini</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">🇨🇴</div>
+          <div class="stat-label"><span data-lang="es">Hecho en Colombia</span><span data-lang="en">Made in Colombia</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="value-item">
+        <div class="value-icon">🎯</div>
+        <div>
+          <div class="value-title"><span data-lang="es">Enfoque en el usuario</span><span data-lang="en">User-first</span></div>
+          <div class="value-desc"><span data-lang="es">Diseñamos cada pantalla pensando en quien la usa, no en quien la construye.</span><span data-lang="en">Every screen is designed for the people who use it, not the people who build it.</span></div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🤖</div>
+        <div>
+          <div class="value-title"><span data-lang="es">Inteligencia Artificial integrada</span><span data-lang="en">Built-in AI</span></div>
+          <div class="value-desc"><span data-lang="es">Usamos Gemini AI para interpretar, corregir y enriquecer la información del usuario en tiempo real.</span><span data-lang="en">We use Gemini AI to interpret, correct, and enrich user data in real time.</span></div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🔒</div>
+        <div>
+          <div class="value-title"><span data-lang="es">Privacidad y seguridad</span><span data-lang="en">Privacy & security</span></div>
+          <div class="value-desc"><span data-lang="es">Los datos de nuestros usuarios son suyos. Nunca los vendemos ni compartimos con terceros.</span><span data-lang="en">Our users' data belongs to them. We never sell or share it with third parties.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APPS ══ -->
+<section id="apps">
+  <p class="section-label">
+    <span data-lang="es">Nuestras aplicaciones</span>
+    <span data-lang="en">Our applications</span>
+  </p>
+  <h2>
+    <span data-lang="es">Lo que construimos</span>
+    <span data-lang="en">What we build</span>
+  </h2>
+  <p class="section-sub">
+    <span data-lang="es">Aplicaciones móviles para Android diseñadas para resolver problemas reales.</span>
+    <span data-lang="en">Android mobile applications designed to solve real-world problems.</span>
+  </p>
+
+  <div class="apps-grid">
+    <!-- Health Organizer - Featured -->
+    <div class="app-card featured">
+      <div>
+        <span class="app-badge badge-live">
+          <span data-lang="es">Disponible en Google Play</span>
+          <span data-lang="en">Available on Google Play</span>
+        </span>
+        <div class="app-icon">💊</div>
+        <div class="app-name">MB Apps — Health Organizer</div>
+        <p class="app-desc">
+          <span data-lang="es">Tu asistente personal de salud. Registra medicamentos, medidas corporales, exámenes médicos y citas, todo en un solo lugar con inteligencia artificial.</span>
+          <span data-lang="en">Your personal health assistant. Track medications, body measurements, medical exams, and appointments — all in one place, powered by AI.</span>
+        </p>
+        <ul class="app-features">
+          <li><span data-lang="es">Registro de medicamentos con recordatorios</span><span data-lang="en">Medication tracking with reminders</span></li>
+          <li><span data-lang="es">Análisis de exámenes con Gemini AI</span><span data-lang="en">Exam analysis powered by Gemini AI</span></li>
+          <li><span data-lang="es">Directorio médico y citas con Google Calendar</span><span data-lang="en">Medical directory and Google Calendar appointments</span></li>
+          <li><span data-lang="es">Seguimiento de medidas corporales</span><span data-lang="en">Body measurement tracking</span></li>
+          <li><span data-lang="es">Contactos de emergencia y ambulancia</span><span data-lang="en">Emergency contacts and ambulance quick-dial</span></li>
+        </ul>
+      </div>
+      <div class="app-visual">💊</div>
+    </div>
+
+    <!-- Inventory App - Coming Soon -->
+    <div class="app-card coming-soon">
+      <span class="app-badge badge-soon">
+        <span data-lang="es">Próximamente</span>
+        <span data-lang="en">Coming soon</span>
+      </span>
+      <div class="app-icon" style="background: linear-gradient(135deg,#1E3358,#2A4A7F);">📦</div>
+      <div class="app-name">
+        <span data-lang="es">MB Apps — Inventarios</span>
+        <span data-lang="en">MB Apps — Inventory</span>
+      </div>
+      <p class="app-desc">
+        <span data-lang="es">Gestión de inventario inteligente para pequeñas y medianas empresas. Control de stock, alertas de reabastecimiento y reportes en tiempo real.</span>
+        <span data-lang="en">Smart inventory management for small and medium businesses. Stock control, restocking alerts, and real-time reports.</span>
+      </p>
+      <ul class="app-features">
+        <li><span data-lang="es">Control de stock en tiempo real</span><span data-lang="en">Real-time stock control</span></li>
+        <li><span data-lang="es">Alertas de reabastecimiento</span><span data-lang="en">Restocking alerts</span></li>
+        <li><span data-lang="es">Reportes y análisis</span><span data-lang="en">Reports & analytics</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TECH ══ -->
+<section id="tech">
+  <p class="section-label">
+    <span data-lang="es">Tecnología</span>
+    <span data-lang="en">Technology</span>
+  </p>
+  <h2>
+    <span data-lang="es">Construido con lo mejor</span>
+    <span data-lang="en">Built with the best</span>
+  </h2>
+  <div class="tech-grid">
+    <div class="tech-pill"><div class="tech-name">FlutterFlow</div><div class="tech-role">UI / Frontend</div></div>
+    <div class="tech-pill"><div class="tech-name">Flutter / Dart</div><div class="tech-role">Mobile framework</div></div>
+    <div class="tech-pill"><div class="tech-name">Firebase</div><div class="tech-role">Backend & Auth</div></div>
+    <div class="tech-pill"><div class="tech-name">Firestore</div><div class="tech-role">Database</div></div>
+    <div class="tech-pill"><div class="tech-name">Gemini AI</div><div class="tech-role">Artificial Intelligence</div></div>
+    <div class="tech-pill"><div class="tech-name">Google Calendar</div><div class="tech-role">Scheduling API</div></div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <p class="section-label">
+    <span data-lang="es">Contacto</span>
+    <span data-lang="en">Contact</span>
+  </p>
+  <h2>
+    <span data-lang="es">Hablemos</span>
+    <span data-lang="en">Let's talk</span>
+  </h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label"><span data-lang="es">Correo</span><span data-lang="en">Email</span></div>
+          <div class="contact-value"><a href="mailto:mbapps.sas@gmail.com">mbapps.sas@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label"><span data-lang="es">Teléfono</span><span data-lang="en">Phone</span></div>
+          <div class="contact-value">+57 315 886 7777</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label"><span data-lang="es">Ubicación</span><span data-lang="en">Location</span></div>
+          <div class="contact-value">Floridablanca, Santander, Colombia</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏢</div>
+        <div>
+          <div class="contact-label">NIT</div>
+          <div class="contact-value">902052164-4</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy Policy -->
+    <div class="privacy-box">
+      <h3>
+        <span data-lang="es">Política de Privacidad</span>
+        <span data-lang="en">Privacy Policy</span>
+      </h3>
+      <p>
+        <span data-lang="es">MB Apps S.A.S. recopila únicamente la información necesaria para el funcionamiento de nuestras aplicaciones. Los datos personales de salud ingresados en MB Apps — Health Organizer son almacenados de forma segura en Firebase y son de uso exclusivo del usuario.</span>
+        <span data-lang="en">MB Apps S.A.S. collects only the information necessary for the operation of our applications. Personal health data entered into MB Apps — Health Organizer is securely stored in Firebase and is for the user's exclusive use.</span>
+      </p>
+      <p>
+        <span data-lang="es"><strong>No vendemos, compartimos ni comercializamos ningún dato personal.</strong> El usuario puede solicitar la eliminación de su cuenta y datos en cualquier momento escribiendo a mbapps.sas@gmail.com.</span>
+        <span data-lang="en"><strong>We do not sell, share, or commercialize any personal data.</strong> Users may request deletion of their account and data at any time by writing to mbapps.sas@gmail.com.</span>
+      </p>
+      <p>
+        <span data-lang="es">Para soporte técnico o consultas sobre privacidad, contáctenos en <a href="mailto:mbapps.sas@gmail.com" style="color:var(--green)">mbapps.sas@gmail.com</a>.</span>
+        <span data-lang="en">For technical support or privacy inquiries, contact us at <a href="mailto:mbapps.sas@gmail.com" style="color:var(--green)">mbapps.sas@gmail.com</a>.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-brand">MB Apps S.A.S.</div>
+  <div class="footer-copy">
+    © 2026 MB Apps S.A.S. — NIT 902052164-4 — Floridablanca, Colombia
+  </div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+    document.documentElement.lang = lang;
+  }
+</script>
+</body>
+</html>
