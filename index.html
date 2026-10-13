@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!--
+    SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
+    Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: index.html
+    VERSION: 1.1  |  ACTUALIZADO: 2026-10-13 09:49 (hora Colombia)
+    Cambios v1.1: Politica de Privacidad ampliada (ES/EN/PT) con la seccion de Google Calendar
+    (permiso calendar.events, Uso Limitado), derechos del usuario y contacto; se agrega la
+    linea de version en el pie de pagina.
+  -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="google-site-verification" content="8WXvIhfnLJdHPbrdQQdoUI1rHgqnvHIR3WUtV7BpJyU" />
@@ -108,13 +116,22 @@
 
     .privacy-box { background: rgba(0,200,150,.05); border: 1px solid rgba(0,200,150,.15); border-radius: 12px; padding: 32px; margin-bottom: 20px; }
     .privacy-box h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+    .privacy-box h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; color: var(--white); margin: 22px 0 8px; }
     .privacy-box p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
     .privacy-box p:last-child { margin-bottom: 0; }
+    .privacy-box ul { margin: 0 0 12px 20px; }
+    .privacy-box li { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 6px; }
+    .privacy-box a { color: var(--green); text-decoration: none; }
+    .privacy-box a:hover { color: var(--accent); }
+    .privacy-box .policy-date { font-size: 12px; letter-spacing: .05em; margin-bottom: 4px; }
 
     /* ── FOOTER ── */
     footer { background: #060D1A; padding: 32px 6vw; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,.06); }
     .footer-brand { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
     .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-version { font-size: 11px; color: var(--muted); opacity: .7; margin-top: 4px; letter-spacing: .03em; }
+    .footer-right { text-align: right; }
+    @media (max-width: 768px) { .footer-right { text-align: center; } }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) { .about-grid, .apps-grid, .contact-grid { grid-template-columns: 1fr; } .app-card.featured { grid-column: 1; grid-template-columns: 1fr; } .about-stats { grid-template-columns: 1fr 1fr; } footer { flex-direction: column; gap: 12px; text-align: center; } }
@@ -201,13 +218,146 @@
     <div class="contact-info">
       <div class="contact-item"><div class="contact-icon">📧</div><div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:mbapps.sas@gmail.com">mbapps.sas@gmail.com</a></div></div></div>
     </div>
-    
+
     <div>
       <!-- Política de Privacidad -->
       <div class="privacy-box" id="privacy">
         <h3><span data-lang="es">Política de Privacidad</span><span data-lang="en">Privacy Policy</span><span data-lang="pt">Política de Privacidade</span></h3>
-        <p><span data-lang="es">MB Apps S.A.S. recopila la información necesaria para nuestras aplicaciones. Los datos se almacenan de forma segura en Firebase.</span><span data-lang="en">MB Apps S.A.S. collects the information necessary for the operation of our applications. Data is securely stored in Firebase.</span><span data-lang="pt">A MB Apps S.A.S. coleta as informações necessárias para o funcionamento dos nossos aplicativos. Os dados são armazenados com segurança no Firebase.</span></p>
-        <p><span data-lang="es"><strong>Uso de IA:</strong> Esta aplicación utiliza inteligencia artificial para procesar información de salud. Los datos enviados se tratan de forma segura y no se utilizan para entrenar modelos de Inteligencia Artificial.</span><span data-lang="en"><strong>AI Usage:</strong> This app uses artificial intelligence to process health information. Data sent is treated securely and is not used to train Artificial Intelligence models.</span><span data-lang="pt"><strong>Uso de IA:</strong> Este aplicativo utiliza inteligência artificial para processar informações de saúde. Os dados enviados são tratados com segurança e não são utilizados para treinar modelos de Inteligência Artificial.</span></p>
+
+        <!-- ESPAÑOL -->
+        <div data-lang="es">
+          <p class="policy-date">Última actualización: 13 de octubre de 2026</p>
+          <p>MB Apps S.A.S. ("nosotros") es la empresa responsable de la aplicación MB Health Organizer ("la app"). Esta política explica qué información recopilamos, para qué la usamos y cómo puedes controlarla.</p>
+
+          <h4>1. Información que recopilamos</h4>
+          <ul>
+            <li>Datos de tu cuenta: nombre y correo electrónico asociados a tu inicio de sesión.</li>
+            <li>La información de salud que tú registras en la app: citas médicas, exámenes, vacunas, medicamentos y los archivos o imágenes que decidas adjuntar.</li>
+            <li>Los mensajes que escribes al asistente de inteligencia artificial de la app.</li>
+            <li>Si decides vincular Google Calendar, un permiso de acceso de Google (ver sección 3).</li>
+          </ul>
+
+          <h4>2. Para qué usamos la información</h4>
+          <p>Usamos tu información únicamente para hacer funcionar la app: guardar y organizar tus registros, responder tus consultas con el asistente, crear tus recordatorios y gestionar tu suscripción. Los datos se almacenan de forma segura en Firebase (Google Cloud).</p>
+
+          <h4>3. Google Calendar (datos de usuario de Google)</h4>
+          <p>Vincular Google Calendar es opcional y solo ocurre cuando tú lo autorizas. La app solicita únicamente el permiso <strong>https://www.googleapis.com/auth/calendar.events</strong> y lo usa solo para:</p>
+          <ul>
+            <li>crear eventos en tu calendario principal para las citas, exámenes, dosis de vacunas y recordatorios de medicamentos que registras en la app; y</li>
+            <li>eliminar esos mismos eventos cuando tú eliminas el registro correspondiente en la app.</li>
+          </ul>
+          <p>La app no lista ni lee los demás eventos de tu calendario y no accede a otros calendarios. Para poder crear y eliminar esos eventos, guardamos de forma segura en nuestros servidores el permiso de acceso (token) que Google nos entrega. No compartimos, vendemos ni transferimos los datos de Google a terceros, no los usamos para publicidad ni para entrenar modelos de inteligencia artificial, y las personas de nuestro equipo no los leen, salvo con tu consentimiento, por razones de seguridad o por obligación legal.</p>
+          <p>El uso y la transferencia a cualquier otra app de la información recibida de las API de Google se ceñirá a la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Política de Datos de Usuario de los Servicios de API de Google</a>, incluidos los requisitos de Uso Limitado.</p>
+
+          <h4>4. Uso de inteligencia artificial</h4>
+          <p>Esta aplicación utiliza inteligencia artificial para procesar información de salud. Los datos enviados se tratan de forma segura y no se utilizan para entrenar modelos de Inteligencia Artificial.</p>
+
+          <h4>5. Con quién compartimos la información</h4>
+          <p>No vendemos tu información. Solo la compartimos con los proveedores que necesitamos para operar la app: la infraestructura de Firebase y Google Cloud (almacenamiento y autenticación), los servicios que procesan las suscripciones (Apple, Google Play y RevenueCat) y el proveedor de inteligencia artificial que genera las respuestas del asistente.</p>
+
+          <h4>6. Seguridad y conservación</h4>
+          <p>Protegemos los datos con autenticación de cuenta, reglas de acceso y conexiones cifradas. Conservamos tu información mientras tu cuenta esté activa.</p>
+
+          <h4>7. Tus derechos: acceso, eliminación y revocación</h4>
+          <ul>
+            <li>Puedes consultar y exportar tus datos desde la app.</li>
+            <li>Puedes eliminar tu cuenta desde la configuración de la app; al hacerlo se eliminan tus datos personales almacenados.</li>
+            <li>Puedes revocar en cualquier momento el acceso de la app a tu Google Calendar desde <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+          </ul>
+
+          <h4>8. Contacto</h4>
+          <p>Si tienes preguntas sobre esta política o quieres ejercer tus derechos, escríbenos a <a href="mailto:ceo@mbapps.app">ceo@mbapps.app</a>.</p>
+        </div>
+
+        <!-- ENGLISH -->
+        <div data-lang="en">
+          <p class="policy-date">Last updated: October 13, 2026</p>
+          <p>MB Apps S.A.S. ("we") is the company responsible for the MB Health Organizer application ("the app"). This policy explains what information we collect, what we use it for, and how you can control it.</p>
+
+          <h4>1. Information we collect</h4>
+          <ul>
+            <li>Account data: the name and email address linked to your sign-in.</li>
+            <li>The health information you enter in the app: medical appointments, exams, vaccines, medications, and any files or images you choose to attach.</li>
+            <li>The messages you write to the app's artificial intelligence assistant.</li>
+            <li>If you choose to link Google Calendar, an access permission from Google (see section 3).</li>
+          </ul>
+
+          <h4>2. How we use the information</h4>
+          <p>We use your information only to make the app work: to store and organize your records, answer your questions through the assistant, create your reminders and manage your subscription. Data is securely stored in Firebase (Google Cloud).</p>
+
+          <h4>3. Google Calendar (Google user data)</h4>
+          <p>Linking Google Calendar is optional and only happens when you authorize it. The app requests only the <strong>https://www.googleapis.com/auth/calendar.events</strong> permission and uses it only to:</p>
+          <ul>
+            <li>create events in your primary calendar for the appointments, exams, vaccine doses and medication reminders you register in the app; and</li>
+            <li>delete those same events when you delete the related record in the app.</li>
+          </ul>
+          <p>The app does not list or read the rest of the events in your calendar and does not access other calendars. To be able to create and delete those events, we securely store on our servers the access token that Google provides to us. We do not share, sell or transfer Google data to third parties, we do not use it for advertising or to train artificial intelligence models, and our team members do not read it, except with your consent, for security reasons or when required by law.</p>
+          <p>The use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+          <h4>4. Use of artificial intelligence</h4>
+          <p>This app uses artificial intelligence to process health information. Data sent is treated securely and is not used to train Artificial Intelligence models.</p>
+
+          <h4>5. Who we share information with</h4>
+          <p>We do not sell your information. We only share it with the providers we need to operate the app: Firebase and Google Cloud infrastructure (storage and authentication), the services that process subscriptions (Apple, Google Play and RevenueCat), and the artificial intelligence provider that generates the assistant's answers.</p>
+
+          <h4>6. Security and retention</h4>
+          <p>We protect data with account authentication, access rules and encrypted connections. We keep your information while your account is active.</p>
+
+          <h4>7. Your rights: access, deletion and revocation</h4>
+          <ul>
+            <li>You can view and export your data from the app.</li>
+            <li>You can delete your account from the app settings; doing so deletes your stored personal data.</li>
+            <li>You can revoke the app's access to your Google Calendar at any time at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+          </ul>
+
+          <h4>8. Contact</h4>
+          <p>If you have questions about this policy or want to exercise your rights, write to us at <a href="mailto:ceo@mbapps.app">ceo@mbapps.app</a>.</p>
+        </div>
+
+        <!-- PORTUGUÊS -->
+        <div data-lang="pt">
+          <p class="policy-date">Última atualização: 13 de outubro de 2026</p>
+          <p>A MB Apps S.A.S. ("nós") é a empresa responsável pelo aplicativo MB Health Organizer ("o app"). Esta política explica quais informações coletamos, para que as usamos e como você pode controlá-las.</p>
+
+          <h4>1. Informações que coletamos</h4>
+          <ul>
+            <li>Dados da sua conta: nome e e-mail associados ao seu login.</li>
+            <li>As informações de saúde que você registra no app: consultas médicas, exames, vacinas, medicamentos e os arquivos ou imagens que decidir anexar.</li>
+            <li>As mensagens que você escreve ao assistente de inteligência artificial do app.</li>
+            <li>Se você decidir vincular o Google Agenda, uma permissão de acesso do Google (veja a seção 3).</li>
+          </ul>
+
+          <h4>2. Para que usamos as informações</h4>
+          <p>Usamos suas informações apenas para fazer o app funcionar: guardar e organizar seus registros, responder suas perguntas com o assistente, criar seus lembretes e gerenciar sua assinatura. Os dados são armazenados com segurança no Firebase (Google Cloud).</p>
+
+          <h4>3. Google Agenda (dados de usuário do Google)</h4>
+          <p>Vincular o Google Agenda é opcional e só acontece quando você autoriza. O app solicita apenas a permissão <strong>https://www.googleapis.com/auth/calendar.events</strong> e a usa somente para:</p>
+          <ul>
+            <li>criar eventos na sua agenda principal para as consultas, exames, doses de vacinas e lembretes de medicamentos que você registra no app; e</li>
+            <li>excluir esses mesmos eventos quando você exclui o registro correspondente no app.</li>
+          </ul>
+          <p>O app não lista nem lê os demais eventos da sua agenda e não acessa outras agendas. Para poder criar e excluir esses eventos, guardamos com segurança em nossos servidores a permissão de acesso (token) que o Google nos fornece. Não compartilhamos, vendemos nem transferimos os dados do Google a terceiros, não os usamos para publicidade nem para treinar modelos de inteligência artificial, e as pessoas da nossa equipe não os leem, exceto com o seu consentimento, por motivos de segurança ou por obrigação legal.</p>
+          <p>O uso e a transferência para qualquer outro app das informações recebidas das APIs do Google seguirão a <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Política de Dados do Usuário dos Serviços de API do Google</a>, incluindo os requisitos de Uso Limitado.</p>
+
+          <h4>4. Uso de inteligência artificial</h4>
+          <p>Este aplicativo utiliza inteligência artificial para processar informações de saúde. Os dados enviados são tratados com segurança e não são utilizados para treinar modelos de Inteligência Artificial.</p>
+
+          <h4>5. Com quem compartilhamos as informações</h4>
+          <p>Não vendemos suas informações. Só as compartilhamos com os provedores de que precisamos para operar o app: a infraestrutura do Firebase e do Google Cloud (armazenamento e autenticação), os serviços que processam as assinaturas (Apple, Google Play e RevenueCat) e o provedor de inteligência artificial que gera as respostas do assistente.</p>
+
+          <h4>6. Segurança e retenção</h4>
+          <p>Protegemos os dados com autenticação de conta, regras de acesso e conexões criptografadas. Mantemos suas informações enquanto sua conta estiver ativa.</p>
+
+          <h4>7. Seus direitos: acesso, exclusão e revogação</h4>
+          <ul>
+            <li>Você pode consultar e exportar seus dados pelo app.</li>
+            <li>Você pode excluir sua conta nas configurações do app; ao fazer isso, seus dados pessoais armazenados são excluídos.</li>
+            <li>Você pode revogar a qualquer momento o acesso do app ao seu Google Agenda em <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+          </ul>
+
+          <h4>8. Contato</h4>
+          <p>Se tiver dúvidas sobre esta política ou quiser exercer seus direitos, escreva para <a href="mailto:ceo@mbapps.app">ceo@mbapps.app</a>.</p>
+        </div>
       </div>
 
       <!-- Términos de Uso (EULA) -->
@@ -221,7 +371,10 @@
 
 <footer>
   <div class="footer-brand">MB Apps S.A.S.</div>
-  <div class="footer-copy">© 2026 MB Apps S.A.S. — NIT 902052164-4</div>
+  <div class="footer-right">
+    <div class="footer-copy">© 2026 MB Apps S.A.S. — NIT 902052164-4</div>
+    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.1 · 13/10/2026 09:49 (hora Colombia)</div>
+  </div>
 </footer>
 
 <script>
