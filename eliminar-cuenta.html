@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
+    Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: eliminar-cuenta.html
+    VERSION: 1.0  |  ACTUALIZADO: 2026-10-27 9:55 (hora Colombia)
+    Cambios v1.0: pagina nueva "Eliminar cuenta y datos" de MB Health Organizer (ES/EN/PT): pasos dentro
+    de la app, solicitud por correo, plazos de la Ley 1581 de 2012, datos que se eliminan y datos que se conservan.
+    URL publica: https://mbapps.app/eliminar-cuenta.html (se usa como URL de eliminacion de datos en Google Play).
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="google-site-verification" content="8WXvIhfnLJdHPbrdQQdoUI1rHgqnvHIR3WUtV7BpJyU" />
+  <title>MB Health Organizer — Eliminar cuenta y datos | MB Apps S.A.S.</title>
+  <meta name="description" content="Cómo eliminar tu cuenta y tus datos de MB Health Organizer, de MB Apps S.A.S. / How to delete your account and data from MB Health Organizer, by MB Apps S.A.S." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00C896;
+      --navy: #0A1628;
+      --navy-mid: #112040;
+      --white: #F5F9FF;
+      --muted: #8BA3C4;
+      --accent: #4DFFE0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background-color: var(--navy); }
+    body { font-family: 'DM Sans', sans-serif; background-color: var(--navy); background-image: linear-gradient(160deg, #0A1628 0%, #112040 100%); background-repeat: no-repeat; background-size: 100% 100%; color: var(--white); min-height: 100vh; }
+
+    /* ── LANG SWITCHER ── */
+    .lang-bar { position: fixed; top: 0; right: 0; z-index: 100; display: flex; padding: 12px 24px; }
+    .lang-btn { background: none; border: 1px solid var(--muted); color: var(--muted); font-family: 'Syne', sans-serif; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 14px; cursor: pointer; transition: all .25s; }
+    .lang-btn:first-child { border-radius: 4px 0 0 4px; }
+    .lang-btn:last-child  { border-radius: 0 4px 4px 0; }
+    .lang-btn:not(:first-child) { border-left: none; }
+    .lang-btn.active { background: var(--green); border-color: var(--green); color: var(--navy); }
+
+    /* ── PAGE ── */
+    .wrap { max-width: 820px; margin: 0 auto; padding: 84px 20px 60px; }
+    .brand { font-family: 'Syne', sans-serif; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--green); margin-bottom: 18px; }
+    h1 { font-family: 'Syne', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 18px; }
+    .lead { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+    .box { background: rgba(0,200,150,.05); border: 1px solid rgba(0,200,150,.15); border-radius: 12px; padding: 28px 30px; margin-bottom: 20px; }
+    .box h2 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+    .box p { font-size: 14.5px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+    .box p:last-child { margin-bottom: 0; }
+    .box ul, .box ol { margin: 0 0 12px 22px; }
+    .box li { font-size: 14.5px; color: var(--muted); line-height: 1.7; margin-bottom: 8px; }
+    .box strong { color: var(--white); font-weight: 600; }
+    .box a, .links a { color: var(--green); text-decoration: none; }
+    .box a:hover, .links a:hover { color: var(--accent); }
+    .links { font-size: 14px; margin-top: 26px; display: flex; gap: 22px; flex-wrap: wrap; }
+    .version { font-size: 11px; color: var(--muted); opacity: .7; margin-top: 28px; letter-spacing: .03em; }
+
+    /* ── LANG DISPLAY ── */
+    [data-lang] { display: none; }
+    body.lang-es [data-lang="es"], body.lang-en [data-lang="en"], body.lang-pt [data-lang="pt"] { display: block; }
+    body.lang-es span[data-lang="es"], body.lang-en span[data-lang="en"], body.lang-pt span[data-lang="pt"] { display: inline; }
+  </style>
+</head>
+<body class="lang-es">
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('pt')">PT</button>
+</div>
+
+<main class="wrap">
+  <p class="brand">MB Apps S.A.S. · MB Health Organizer</p>
+
+  <h1>
+    <span data-lang="es">Eliminar tu cuenta y tus datos</span>
+    <span data-lang="en">Delete your account and data</span>
+    <span data-lang="pt">Excluir sua conta e seus dados</span>
+  </h1>
+  <p class="lead">
+    <span data-lang="es">Esta página explica cómo eliminar tu cuenta de <strong>MB Health Organizer</strong>, la aplicación desarrollada por <strong>MB Apps S.A.S.</strong> (Floridablanca, Santander, Colombia), y qué pasa con tus datos.</span>
+    <span data-lang="en">This page explains how to delete your <strong>MB Health Organizer</strong> account, the app developed by <strong>MB Apps S.A.S.</strong> (Floridablanca, Santander, Colombia), and what happens to your data.</span>
+    <span data-lang="pt">Esta página explica como excluir sua conta do <strong>MB Health Organizer</strong>, o aplicativo desenvolvido pela <strong>MB Apps S.A.S.</strong> (Floridablanca, Santander, Colômbia), e o que acontece com seus dados.</span>
+  </p>
+
+  <!-- ═════════ 1. DESDE LA APP ═════════ -->
+  <section class="box">
+    <h2>
+      <span data-lang="es">1. Eliminar la cuenta desde la app</span>
+      <span data-lang="en">1. Delete your account from the app</span>
+      <span data-lang="pt">1. Excluir a conta pelo aplicativo</span>
+    </h2>
+    <div data-lang="es">
+      <ol>
+        <li>Abre <strong>MB Health Organizer</strong> e inicia sesión.</li>
+        <li>En la pantalla principal pulsa el botón <strong>Configurar</strong>.</li>
+        <li>En <strong>Configuraciones</strong> pulsa <strong>Mi Cuenta</strong>.</li>
+        <li>En <strong>Mi Cuenta</strong> pulsa <strong>Eliminar Cuenta</strong> (al final de la pantalla).</li>
+        <li>Pulsa el icono rojo de la <strong>papelera</strong>, arriba a la derecha.</li>
+        <li>En la ventana <strong>¿Eliminar tu cuenta?</strong> pulsa <strong>Eliminar</strong>. Te enviaremos un <strong>código de verificación</strong> al correo de tu cuenta.</li>
+        <li>Escribe el código, cuéntanos el motivo (opcional) y pulsa <strong>Eliminar</strong> para confirmar.</li>
+      </ol>
+      <p>La eliminación es <strong>permanente</strong> y no se puede deshacer. Los nombres de los botones pueden aparecer en el idioma de tu app.</p>
+    </div>
+    <div data-lang="en">
+      <ol>
+        <li>Open <strong>MB Health Organizer</strong> and sign in.</li>
+        <li>On the main screen tap the <strong>Configurar</strong> (Settings) button.</li>
+        <li>In <strong>Configuraciones</strong> (Settings) tap <strong>Mi Cuenta</strong> (My Account).</li>
+        <li>In <strong>Mi Cuenta</strong> tap <strong>Eliminar Cuenta</strong> (Delete Account), at the bottom of the screen.</li>
+        <li>Tap the red <strong>trash can</strong> icon at the top right.</li>
+        <li>In the <strong>Delete your account?</strong> window tap <strong>Eliminar</strong> (Delete). We will send a <strong>verification code</strong> to your account email.</li>
+        <li>Enter the code, tell us the reason (optional) and tap <strong>Eliminar</strong> (Delete) to confirm.</li>
+      </ol>
+      <p>Deletion is <strong>permanent</strong> and cannot be undone. Button names may appear in your app's language.</p>
+    </div>
+    <div data-lang="pt">
+      <ol>
+        <li>Abra o <strong>MB Health Organizer</strong> e faça login.</li>
+        <li>Na tela principal, toque no botão <strong>Configurar</strong> (Configurações).</li>
+        <li>Em <strong>Configuraciones</strong> (Configurações), toque em <strong>Mi Cuenta</strong> (Minha Conta).</li>
+        <li>Em <strong>Mi Cuenta</strong>, toque em <strong>Eliminar Cuenta</strong> (Excluir Conta), no fim da tela.</li>
+        <li>Toque no ícone vermelho da <strong>lixeira</strong>, no canto superior direito.</li>
+        <li>Na janela <strong>Excluir sua conta?</strong>, toque em <strong>Eliminar</strong> (Excluir). Enviaremos um <strong>código de verificação</strong> para o e-mail da sua conta.</li>
+        <li>Digite o código, conte-nos o motivo (opcional) e toque em <strong>Eliminar</strong> (Excluir) para confirmar.</li>
+      </ol>
+      <p>A exclusão é <strong>permanente</strong> e não pode ser desfeita. Os nomes dos botões podem aparecer no idioma do seu aplicativo.</p>
+    </div>
+  </section>
+
+  <!-- ═════════ 2. DESCARGAR TUS DATOS ═════════ -->
+  <section class="box">
+    <h2>
+      <span data-lang="es">2. Descarga una copia de tus datos (opcional)</span>
+      <span data-lang="en">2. Download a copy of your data (optional)</span>
+      <span data-lang="pt">2. Baixe uma cópia dos seus dados (opcional)</span>
+    </h2>
+    <p data-lang="es">Antes de eliminar, en la misma pantalla <strong>Eliminar Cuenta</strong> puedes pulsar <strong>Solicitar Mis Datos</strong>. Te enviaremos por correo una copia de tus registros, organizada por categorías, con enlaces a tus archivos adjuntos.</p>
+    <p data-lang="en">Before deleting, on the same <strong>Eliminar Cuenta</strong> (Delete Account) screen you can tap <strong>Solicitar Mis Datos</strong> (Request My Data). We will email you a copy of your records, organized by category, with links to your attachments.</p>
+    <p data-lang="pt">Antes de excluir, na mesma tela <strong>Eliminar Cuenta</strong> (Excluir Conta) você pode tocar em <strong>Solicitar Mis Datos</strong> (Solicitar Meus Dados). Enviaremos por e-mail uma cópia dos seus registros, organizada por categorias, com links para seus anexos.</p>
+  </section>
+
+  <!-- ═════════ 3. POR CORREO ═════════ -->
+  <section class="box">
+    <h2>
+      <span data-lang="es">3. Si no puedes entrar a la app: solicítalo por correo</span>
+      <span data-lang="en">3. If you cannot access the app: request it by email</span>
+      <span data-lang="pt">3. Se você não consegue acessar o aplicativo: solicite por e-mail</span>
+    </h2>
+    <div data-lang="es">
+      <p>Escribe a <a href="mailto:ceo@mbapps.app?subject=Eliminar%20mi%20cuenta%20-%20MB%20Health%20Organizer">ceo@mbapps.app</a> <strong>desde el correo de tu cuenta</strong>, con el asunto “Eliminar mi cuenta – MB Health Organizer”. Podemos pedirte que confirmes tu identidad antes de eliminar.</p>
+      <p>Atenderemos tu solicitud en un máximo de <strong>15 días hábiles</strong>. Si no es posible resolverla en ese plazo, te informaremos los motivos y la nueva fecha, que no superará 8 días hábiles adicionales (Ley 1581 de 2012, art. 15).</p>
+    </div>
+    <div data-lang="en">
+      <p>Write to <a href="mailto:ceo@mbapps.app?subject=Delete%20my%20account%20-%20MB%20Health%20Organizer">ceo@mbapps.app</a> <strong>from the email address of your account</strong>, with the subject “Delete my account – MB Health Organizer”. We may ask you to confirm your identity before deleting.</p>
+      <p>We will handle your request within a maximum of <strong>15 business days</strong>. If it cannot be resolved in that period, we will tell you the reasons and the new date, which will not exceed 8 additional business days (Colombian Law 1581 of 2012, art. 15).</p>
+    </div>
+    <div data-lang="pt">
+      <p>Escreva para <a href="mailto:ceo@mbapps.app?subject=Excluir%20minha%20conta%20-%20MB%20Health%20Organizer">ceo@mbapps.app</a> <strong>a partir do e-mail da sua conta</strong>, com o assunto “Excluir minha conta – MB Health Organizer”. Podemos pedir que você confirme sua identidade antes de excluir.</p>
+      <p>Atenderemos sua solicitação em no máximo <strong>15 dias úteis</strong>. Se não for possível resolvê-la nesse prazo, informaremos os motivos e a nova data, que não superará 8 dias úteis adicionais (Lei colombiana 1581 de 2012, art. 15).</p>
+    </div>
+  </section>
+
+  <!-- ═════════ 4. QUÉ SE ELIMINA ═════════ -->
+  <section class="box">
+    <h2>
+      <span data-lang="es">4. Qué datos se eliminan</span>
+      <span data-lang="en">4. What data is deleted</span>
+      <span data-lang="pt">4. Quais dados são excluídos</span>
+    </h2>
+    <ul data-lang="es">
+      <li>Tus <strong>registros de salud</strong> (citas, medicinas, exámenes, vacunas, medidas, directorio y demás).</li>
+      <li>Tus <strong>imágenes y archivos</strong> adjuntos guardados en la app.</li>
+      <li>El <strong>historial de consultas</strong> de tu cuenta.</li>
+      <li>Los <strong>recordatorios que la app creó en tu Google Calendar</strong>.</li>
+      <li>Tu <strong>perfil</strong> y tu <strong>acceso</strong> a la app (tu cuenta). Si perteneces a un Círculo Familiar, sales de él.</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Your <strong>health records</strong> (appointments, medicines, exams, vaccines, measurements, directory and others).</li>
+      <li>Your <strong>images and files</strong> attached in the app.</li>
+      <li>Your account's <strong>query history</strong>.</li>
+      <li>The <strong>reminders the app created in your Google Calendar</strong>.</li>
+      <li>Your <strong>profile</strong> and your <strong>access</strong> to the app (your account). If you belong to a Family Circle, you leave it.</li>
+    </ul>
+    <ul data-lang="pt">
+      <li>Seus <strong>registros de saúde</strong> (consultas, medicamentos, exames, vacinas, medidas, diretório e outros).</li>
+      <li>Suas <strong>imagens e arquivos</strong> anexados no aplicativo.</li>
+      <li>O <strong>histórico de consultas</strong> da sua conta.</li>
+      <li>Os <strong>lembretes que o aplicativo criou no seu Google Agenda</strong>.</li>
+      <li>Seu <strong>perfil</strong> e seu <strong>acesso</strong> ao aplicativo (sua conta). Se você pertence a um Círculo Familiar, você sai dele.</li>
+    </ul>
+  </section>
+
+  <!-- ═════════ 5. QUÉ SE CONSERVA ═════════ -->
+  <section class="box">
+    <h2>
+      <span data-lang="es">5. Qué se conserva y por cuánto tiempo</span>
+      <span data-lang="en">5. What is kept and for how long</span>
+      <span data-lang="pt">5. O que é mantido e por quanto tempo</span>
+    </h2>
+    <div data-lang="es">
+      <ul>
+        <li>Un <strong>resumen mínimo, sin datos de salud</strong>: tu correo, nombre, fechas de creación y eliminación de la cuenta, el motivo que indicaste y la plataforma (Android o iOS). Lo usamos para estadísticas internas y control, y lo conservamos <strong>14 meses</strong>.</li>
+        <li>Los <strong>datos de uso</strong> medidos con Google Analytics para Firebase (sesiones, pantallas, versión, tipo de dispositivo; nunca el contenido de tus registros) se conservan hasta <strong>14 meses</strong>, como indica nuestra <a href="https://mbapps.app/#privacy">Política de Privacidad</a>.</li>
+      </ul>
+      <p><strong>Importante:</strong> eliminar la cuenta no cancela tu suscripción. Si tienes una suscripción de pago, cancélala desde tu cuenta de <strong>App Store</strong> o de <strong>Google Play</strong>.</p>
+      <p>También puedes retirar el acceso de la app a tu Google Calendar en cualquier momento desde <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>.</p>
+    </div>
+    <div data-lang="en">
+      <ul>
+        <li>A <strong>minimal summary, with no health data</strong>: your email, name, account creation and deletion dates, the reason you gave and the platform (Android or iOS). We use it for internal statistics and control, and keep it for <strong>14 months</strong>.</li>
+        <li><strong>Usage data</strong> measured with Google Analytics for Firebase (sessions, screens, version, device type; never the content of your records) is kept for up to <strong>14 months</strong>, as stated in our <a href="https://mbapps.app/#privacy">Privacy Policy</a>.</li>
+      </ul>
+      <p><strong>Important:</strong> deleting your account does not cancel your subscription. If you have a paid subscription, cancel it from your <strong>App Store</strong> or <strong>Google Play</strong> account.</p>
+      <p>You can also revoke the app's access to your Google Calendar at any time at <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>.</p>
+    </div>
+    <div data-lang="pt">
+      <ul>
+        <li>Um <strong>resumo mínimo, sem dados de saúde</strong>: seu e-mail, nome, datas de criação e exclusão da conta, o motivo informado e a plataforma (Android ou iOS). Usamos para estatísticas internas e controle, e o mantemos por <strong>14 meses</strong>.</li>
+        <li>Os <strong>dados de uso</strong> medidos com o Google Analytics para Firebase (sessões, telas, versão, tipo de dispositivo; nunca o conteúdo dos seus registros) são mantidos por até <strong>14 meses</strong>, conforme nossa <a href="https://mbapps.app/#privacy">Política de Privacidade</a>.</li>
+      </ul>
+      <p><strong>Importante:</strong> excluir a conta não cancela sua assinatura. Se você tem uma assinatura paga, cancele-a pela sua conta da <strong>App Store</strong> ou do <strong>Google Play</strong>.</p>
+      <p>Você também pode revogar o acesso do aplicativo ao seu Google Agenda a qualquer momento em <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>.</p>
+    </div>
+  </section>
+
+  <div class="links">
+    <a href="https://mbapps.app/#privacy"><span data-lang="es">Política de Privacidad</span><span data-lang="en">Privacy Policy</span><span data-lang="pt">Política de Privacidade</span></a>
+    <a href="https://mbapps.app/"><span data-lang="es">Volver al sitio de MB Apps S.A.S.</span><span data-lang="en">Back to the MB Apps S.A.S. site</span><span data-lang="pt">Voltar ao site da MB Apps S.A.S.</span></a>
+    <a href="mailto:ceo@mbapps.app">ceo@mbapps.app</a>
+  </div>
+
+  <p class="version">© 2026 MB Apps S.A.S. — NIT 902052164-4 · Eliminar cuenta v1.0 · 27/10/2026 09:55 (hora Colombia)</p>
+</main>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
+    var btn = document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]');
+    if (btn) btn.classList.add('active');
+  }
+  // Idioma inicial: el del navegador (es / en / pt); si no, español.
+  (function () {
+    var n = (navigator.language || 'es').slice(0, 2).toLowerCase();
+    if (n === 'en' || n === 'pt') setLang(n);
+  })();
+</script>
+</body>
+</html>
