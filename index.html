@@ -4,7 +4,11 @@
   <!--
     SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
     Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: index.html
-    VERSION: 1.4  |  ACTUALIZADO: 2026-10-27 7:55 (hora Colombia)
+    VERSION: 1.5  |  ACTUALIZADO: 2026-10-27 12:45 (hora Colombia)
+    Cambios v1.5: Politica de Privacidad (ES/EN/PT): seccion 1 agrega suscripcion, datos tecnicos (errores y ubicacion
+    aproximada por IP) y voz (dictado en el telefono; voz de Lia con Google Text-to-Speech); seccion 5 agrega Crashlytics
+    y Google Text-to-Speech; seccion 6 explica el resumen minimo conservado 14 meses y los datos de Analytics al
+    eliminar la cuenta; seccion 7 enlaza eliminar-cuenta.html y aclara que no se cancela la suscripcion.
     Cambios v1.4: Politica de Privacidad (ES/EN/PT): medicion de uso con Google Analytics para
     Firebase (secciones 1, 2, 5 y 6; datos de uso conservados 14 meses) y nueva seccion 8 de
     tratamiento de datos personales en Colombia (Ley 1581 de 2012); Contacto pasa a la seccion 9.
@@ -242,6 +246,9 @@
             <li>La información de salud que tú registras en la app: citas médicas, exámenes, vacunas, medicamentos y los archivos o imágenes que decidas adjuntar.</li>
             <li>Los mensajes que escribes al asistente de inteligencia artificial de la app.</li>
             <li>Datos de uso de la app: cuándo abres y cierras la app y cuánto tiempo la usas, las pantallas que visitas, la versión de la app, el tipo de dispositivo, el sistema operativo y el idioma, junto con un identificador técnico de la instalación. Nunca se mide el contenido de tus registros de salud ni de tus mensajes.</li>
+            <li>Información de tu suscripción: tu plan y el estado de tu compra. Los pagos los procesan Apple o Google Play y RevenueCat; nosotros no vemos los datos de tu tarjeta.</li>
+            <li>Datos técnicos: informes de errores de la app (Firebase Crashlytics) y una ubicación aproximada, deducida de tu dirección IP, que no es tu ubicación exacta.</li>
+            <li>Voz: cuando dictas un mensaje, la transcripción la hace el servicio de reconocimiento de voz de tu teléfono (Apple o Google, según tu dispositivo); MB Apps no recibe ni guarda tu audio, solo el texto que aparece en el chat. Si tu plan incluye la voz de Lia, el texto de su respuesta se envía a Google Text-to-Speech para generar el audio; ese audio se guarda en tu cuenta y se elimina cuando eliminas tu cuenta.</li>
             <li>Si decides vincular Google Calendar, un permiso de acceso de Google (ver sección 3).</li>
           </ul>
 
@@ -261,15 +268,15 @@
           <p>Esta aplicación utiliza inteligencia artificial para procesar información de salud. Los datos enviados se tratan de forma segura y no se utilizan para entrenar modelos de Inteligencia Artificial.</p>
 
           <h4>5. Con quién compartimos la información</h4>
-          <p>No vendemos tu información. Solo la compartimos con los proveedores que necesitamos para operar la app: la infraestructura de Firebase y Google Cloud (almacenamiento y autenticación), la herramienta de medición de uso Google Analytics para Firebase, los servicios que procesan las suscripciones (Apple, Google Play y RevenueCat) y el proveedor de inteligencia artificial que genera las respuestas del asistente.</p>
+          <p>No vendemos tu información. Solo la compartimos con los proveedores que necesitamos para operar la app: la infraestructura de Firebase y Google Cloud (almacenamiento, autenticación e informes de errores con Firebase Crashlytics), la herramienta de medición de uso Google Analytics para Firebase, el servicio Google Text-to-Speech (voz de Lia), los servicios que procesan las suscripciones (Apple, Google Play y RevenueCat) y el proveedor de inteligencia artificial que genera las respuestas del asistente.</p>
 
           <h4>6. Seguridad y conservación</h4>
-          <p>Protegemos los datos con autenticación de cuenta, reglas de acceso y conexiones cifradas. Conservamos tu información mientras tu cuenta esté activa. Los datos de uso en Google Analytics se conservan 14 meses y luego se eliminan automáticamente.</p>
+          <p>Protegemos los datos con autenticación de cuenta, reglas de acceso y conexiones cifradas. Conservamos tu información mientras tu cuenta esté activa. Cuando eliminas tu cuenta borramos tus datos personales (ver sección 7). Conservamos durante 14 meses un resumen mínimo, sin datos de salud, con tu correo, nombre, fechas de creación y eliminación de la cuenta, el motivo que indicaste y la plataforma, para estadísticas internas y control. Los datos de uso de Google Analytics no se borran al eliminar la cuenta; se eliminan automáticamente a los 14 meses.</p>
 
           <h4>7. Tus derechos: acceso, eliminación y revocación</h4>
           <ul>
             <li>Puedes consultar y exportar tus datos desde la app.</li>
-            <li>Puedes eliminar tu cuenta desde la configuración de la app; al hacerlo se eliminan tus datos personales almacenados.</li>
+            <li>Puedes eliminar tu cuenta desde la app (Configurar → Mi Cuenta → Eliminar Cuenta) o, si no puedes entrar, pidiéndolo a <a href="mailto:ceo@mbapps.app">ceo@mbapps.app</a>; las instrucciones están en <a href="https://mbapps.app/eliminar-cuenta.html">mbapps.app/eliminar-cuenta.html</a>. Al hacerlo se eliminan tus datos personales almacenados. Eliminar la cuenta no cancela tu suscripción: cancélala desde App Store o Google Play.</li>
             <li>Puedes revocar en cualquier momento el acceso de la app a tu Google Calendar desde <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
           </ul>
 
@@ -301,6 +308,9 @@
             <li>The health information you enter in the app: medical appointments, exams, vaccines, medications, and any files or images you choose to attach.</li>
             <li>The messages you write to the app's artificial intelligence assistant.</li>
             <li>App usage data: when you open and close the app and how long you use it, the screens you visit, the app version, device type, operating system and language, together with a technical identifier of the installation. The content of your health records or your messages is never measured.</li>
+            <li>Subscription information: your plan and the status of your purchase. Payments are processed by Apple or Google Play and RevenueCat; we do not see your card details.</li>
+            <li>Technical data: app error reports (Firebase Crashlytics) and an approximate location, inferred from your IP address, which is not your exact location.</li>
+            <li>Voice: when you dictate a message, the transcription is done by your phone's speech recognition service (Apple or Google, depending on your device); MB Apps does not receive or store your audio, only the text that appears in the chat. If your plan includes Lia's voice, the text of her answer is sent to Google Text-to-Speech to generate the audio; that audio is stored in your account and is deleted when you delete your account.</li>
             <li>If you choose to link Google Calendar, an access permission from Google (see section 3).</li>
           </ul>
 
@@ -320,15 +330,15 @@
           <p>This app uses artificial intelligence to process health information. Data sent is treated securely and is not used to train Artificial Intelligence models.</p>
 
           <h4>5. Who we share information with</h4>
-          <p>We do not sell your information. We only share it with the providers we need to operate the app: Firebase and Google Cloud infrastructure (storage and authentication), the usage measurement tool Google Analytics for Firebase, the services that process subscriptions (Apple, Google Play and RevenueCat), and the artificial intelligence provider that generates the assistant's answers.</p>
+          <p>We do not sell your information. We only share it with the providers we need to operate the app: Firebase and Google Cloud infrastructure (storage, authentication and error reports with Firebase Crashlytics), the usage measurement tool Google Analytics for Firebase, the Google Text-to-Speech service (Lia's voice), the services that process subscriptions (Apple, Google Play and RevenueCat), and the artificial intelligence provider that generates the assistant's answers.</p>
 
           <h4>6. Security and retention</h4>
-          <p>We protect data with account authentication, access rules and encrypted connections. We keep your information while your account is active. Usage data in Google Analytics is kept for 14 months and then automatically deleted.</p>
+          <p>We protect data with account authentication, access rules and encrypted connections. We keep your information while your account is active. When you delete your account we delete your personal data (see section 7). We keep for 14 months a minimal summary, with no health data, containing your email, name, account creation and deletion dates, the reason you gave and the platform, for internal statistics and control. Usage data in Google Analytics is not deleted when you delete your account; it is automatically deleted after 14 months.</p>
 
           <h4>7. Your rights: access, deletion and revocation</h4>
           <ul>
             <li>You can view and export your data from the app.</li>
-            <li>You can delete your account from the app settings; doing so deletes your stored personal data.</li>
+            <li>You can delete your account from the app (Configure → My Account → Delete Account) or, if you cannot sign in, by asking at <a href="mailto:ceo@mbapps.app">ceo@mbapps.app</a>; the instructions are at <a href="https://mbapps.app/eliminar-cuenta.html">mbapps.app/eliminar-cuenta.html</a>. Doing so deletes your stored personal data. Deleting your account does not cancel your subscription: cancel it from the App Store or Google Play.</li>
             <li>You can revoke the app's access to your Google Calendar at any time at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
           </ul>
 
@@ -360,6 +370,9 @@
             <li>As informações de saúde que você registra no app: consultas médicas, exames, vacinas, medicamentos e os arquivos ou imagens que decidir anexar.</li>
             <li>As mensagens que você escreve ao assistente de inteligência artificial do app.</li>
             <li>Dados de uso do app: quando você abre e fecha o app e por quanto tempo o usa, as telas que visita, a versão do app, o tipo de dispositivo, o sistema operacional e o idioma, junto com um identificador técnico da instalação. O conteúdo dos seus registros de saúde ou das suas mensagens nunca é medido.</li>
+            <li>Informações da sua assinatura: seu plano e o status da sua compra. Os pagamentos são processados pela Apple ou Google Play e pela RevenueCat; nós não vemos os dados do seu cartão.</li>
+            <li>Dados técnicos: relatórios de erros do app (Firebase Crashlytics) e uma localização aproximada, deduzida do seu endereço IP, que não é a sua localização exata.</li>
+            <li>Voz: quando você dita uma mensagem, a transcrição é feita pelo serviço de reconhecimento de voz do seu telefone (Apple ou Google, conforme o seu dispositivo); a MB Apps não recebe nem guarda o seu áudio, apenas o texto que aparece no chat. Se o seu plano inclui a voz da Lia, o texto da resposta dela é enviado ao Google Text-to-Speech para gerar o áudio; esse áudio fica guardado na sua conta e é excluído quando você exclui a conta.</li>
             <li>Se você decidir vincular o Google Agenda, uma permissão de acesso do Google (veja a seção 3).</li>
           </ul>
 
@@ -379,15 +392,15 @@
           <p>Este aplicativo utiliza inteligência artificial para processar informações de saúde. Os dados enviados são tratados com segurança e não são utilizados para treinar modelos de Inteligência Artificial.</p>
 
           <h4>5. Com quem compartilhamos as informações</h4>
-          <p>Não vendemos suas informações. Só as compartilhamos com os provedores de que precisamos para operar o app: a infraestrutura do Firebase e do Google Cloud (armazenamento e autenticação), a ferramenta de medição de uso Google Analytics para Firebase, os serviços que processam as assinaturas (Apple, Google Play e RevenueCat) e o provedor de inteligência artificial que gera as respostas do assistente.</p>
+          <p>Não vendemos suas informações. Só as compartilhamos com os provedores de que precisamos para operar o app: a infraestrutura do Firebase e do Google Cloud (armazenamento, autenticação e relatórios de erros com o Firebase Crashlytics), a ferramenta de medição de uso Google Analytics para Firebase, o serviço Google Text-to-Speech (voz da Lia), os serviços que processam as assinaturas (Apple, Google Play e RevenueCat) e o provedor de inteligência artificial que gera as respostas do assistente.</p>
 
           <h4>6. Segurança e retenção</h4>
-          <p>Protegemos os dados com autenticação de conta, regras de acesso e conexões criptografadas. Mantemos suas informações enquanto sua conta estiver ativa. Os dados de uso no Google Analytics são mantidos por 14 meses e depois excluídos automaticamente.</p>
+          <p>Protegemos os dados com autenticação de conta, regras de acesso e conexões criptografadas. Mantemos suas informações enquanto sua conta estiver ativa. Quando você exclui sua conta, apagamos seus dados pessoais (veja a seção 7). Mantemos por 14 meses um resumo mínimo, sem dados de saúde, com seu e-mail, nome, datas de criação e exclusão da conta, o motivo informado e a plataforma, para estatísticas internas e controle. Os dados de uso do Google Analytics não são apagados ao excluir a conta; são excluídos automaticamente após 14 meses.</p>
 
           <h4>7. Seus direitos: acesso, exclusão e revogação</h4>
           <ul>
             <li>Você pode consultar e exportar seus dados pelo app.</li>
-            <li>Você pode excluir sua conta nas configurações do app; ao fazer isso, seus dados pessoais armazenados são excluídos.</li>
+            <li>Você pode excluir sua conta pelo app (Configurar → Minha Conta → Excluir Conta) ou, se não conseguir entrar, solicitando a <a href="mailto:ceo@mbapps.app">ceo@mbapps.app</a>; as instruções estão em <a href="https://mbapps.app/eliminar-cuenta.html">mbapps.app/eliminar-cuenta.html</a>. Ao fazer isso, seus dados pessoais armazenados são excluídos. Excluir a conta não cancela sua assinatura: cancele-a pela App Store ou pelo Google Play.</li>
             <li>Você pode revogar a qualquer momento o acesso do app ao seu Google Agenda em <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
           </ul>
 
@@ -422,7 +435,7 @@
   <div class="footer-brand">MB Apps S.A.S.</div>
   <div class="footer-right">
     <div class="footer-copy">© 2026 MB Apps S.A.S. — NIT 902052164-4</div>
-    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.4 · 27/10/2026 07:55 (hora Colombia)</div>
+    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.5 · 27/10/2026 12:45 (hora Colombia)</div>
   </div>
 </footer>
 
