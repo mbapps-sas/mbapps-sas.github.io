@@ -4,7 +4,8 @@
   <!--
     SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
     Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: descargar.html
-    VERSION: 1.0  |  ACTUALIZADO: 2026-11-05 14:30 (hora Colombia)
+    VERSION: 1.1  |  ACTUALIZADO: 2026-11-05 15:15 (hora Colombia)
+    Cambios v1.1: agrega botones ES / EN / PT en la parte inferior para cambiar el idioma del texto.
     Cambios v1.0: pagina nueva "Descargar MB Health Organizer". Detecta el telefono:
     Android -> Google Play, iPhone/iPad -> App Store, computador -> muestra los dos botones.
     Pasa las etiquetas utm_* del enlace a Google Play (parametro referrer) para medir de donde llegan las instalaciones.
@@ -27,6 +28,12 @@
     .btn { display: block; padding: 16px 24px; margin-bottom: 14px; border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; background: var(--green); color: var(--navy); }
     .btn.ios { background: transparent; border: 1px solid var(--green); color: var(--green); }
     .small { font-size: 12px; margin-top: 24px; margin-bottom: 0; }
+    .lang-bar { display: flex; justify-content: center; margin-top: 28px; }
+    .lang-btn { background: none; border: 1px solid var(--muted); color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; padding: 8px 18px; cursor: pointer; }
+    .lang-btn:first-child { border-radius: 4px 0 0 4px; }
+    .lang-btn:last-child { border-radius: 0 4px 4px 0; }
+    .lang-btn:not(:first-child) { border-left: none; }
+    .lang-btn.active { background: var(--green); border-color: var(--green); color: var(--navy); }
   </style>
 </head>
 <body>
@@ -35,6 +42,11 @@
     <p id="txt">Tu salud y la de tu familia en un solo lugar, con Lia, tu asistente de salud. Elige tu tienda:</p>
     <a id="btnAndroid" class="btn" href="https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord">Google Play (Android)</a>
     <a id="btnIos" class="btn ios" href="https://apps.apple.com/app/id6770292497">App Store (iPhone)</a>
+    <div class="lang-bar">
+      <button class="lang-btn" data-l="es" onclick="setIdioma('es')">ES</button>
+      <button class="lang-btn" data-l="en" onclick="setIdioma('en')">EN</button>
+      <button class="lang-btn" data-l="pt" onclick="setIdioma('pt')">PT</button>
+    </div>
     <p class="small">MB Apps S.A.S. · <a href="https://mbapps.app" style="color:#8BA3C4;">mbapps.app</a></p>
   </div>
 
@@ -50,7 +62,17 @@
         en: "Your health and your family's health in one place, with Lia, your health assistant. Choose your store:",
         pt: "Sua saúde e a da sua família em um só lugar, com a Lia, sua assistente de saúde. Escolha sua loja:"
       };
-      if (textos[idioma]) { document.getElementById("txt").textContent = textos[idioma]; document.documentElement.lang = idioma; }
+      // Cambia el texto y marca el boton del idioma elegido (tambien lo usan los botones ES / EN / PT).
+      window.setIdioma = function (l) {
+        if (!textos[l]) { l = "es"; }
+        document.getElementById("txt").textContent = textos[l];
+        document.documentElement.lang = l;
+        var botones = document.querySelectorAll(".lang-btn");
+        for (var i = 0; i < botones.length; i++) {
+          botones[i].classList.toggle("active", botones[i].getAttribute("data-l") === l);
+        }
+      };
+      window.setIdioma(idioma);
 
       // Pasar las etiquetas utm_* del enlace (ej. utm_source=facebook) a Google Play.
       var params = new URLSearchParams(window.location.search);
