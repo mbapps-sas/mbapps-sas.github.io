@@ -4,7 +4,12 @@
   <!--
     SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
     Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: index.html
-    VERSION: 1.5  |  ACTUALIZADO: 2026-10-27 12:45 (hora Colombia)
+    VERSION: 1.6  |  ACTUALIZADO: 2026-11-05 16:50 (hora Colombia)
+    Cambios v1.6: bloque de descarga al inicio de la pagina (y en la tarjeta de la app) con los botones Google Play
+    (Android) y App Store (iPhone), en ES/EN/PT con los mismos botones de idioma del sitio. El idioma inicial sigue
+    el idioma del telefono. Si el enlace trae etiquetas utm_* (anuncios), se pasan a Google Play (parametro referrer)
+    para medir de donde llegan las instalaciones.
+    Enlaces: Google Play = com.montblancds.medicalrecord | App Store = id6770292497
     Cambios v1.5: Politica de Privacidad (ES/EN/PT): seccion 1 agrega suscripcion, datos tecnicos (errores y ubicacion
     aproximada por IP) y voz (dictado en el telefono; voz de Lia con Google Text-to-Speech); seccion 5 agrega Crashlytics
     y Google Text-to-Speech; seccion 6 explica el resumen minimo conservado 14 meses y los datos de Analytics al
@@ -59,14 +64,22 @@
     .tagline::before { content: ''; display: block; width: 32px; height: 2px; background: var(--green); }
     h1 { font-family: 'Syne', sans-serif; font-size: clamp(42px, 7vw, 88px); font-weight: 800; line-height: .95; letter-spacing: -.03em; margin-bottom: 28px; }
     h1 span { color: var(--green); }
-    .hero-desc { font-size: clamp(15px, 1.8vw, 18px); color: var(--muted); line-height: 1.7; max-width: 540px; margin-bottom: 44px; }
+    .hero-desc { font-size: clamp(15px, 1.8vw, 18px); color: var(--muted); line-height: 1.7; max-width: 540px; margin-bottom: 36px; }
     .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: .06em; text-decoration: none; transition: all .25s; }
     .btn-primary { background: var(--green); color: var(--navy); }
     .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
     .btn-ghost { border: 1px solid rgba(255,255,255,.15); color: var(--white); margin-left: 12px; }
     .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+    .btn-outline { border: 1px solid var(--green); color: var(--green); }
+    .btn-outline:hover { background: rgba(0,200,150,.1); transform: translateY(-2px); }
     .scroll-hint { position: absolute; bottom: 32px; left: 6vw; font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 8px; }
     .scroll-hint::after { content: ''; display: block; width: 1px; height: 40px; background: linear-gradient(to bottom, var(--muted), transparent); }
+
+    /* ── DESCARGA (botones de las tiendas) ── */
+    .download-box { margin-bottom: 36px; }
+    .download-title { font-family: 'Syne', sans-serif; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
+    .store-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .app-card .store-row { margin-bottom: 8px; }
 
     /* ── SECTION BASE ── */
     section { padding: 100px 6vw; }
@@ -184,8 +197,15 @@
       <span data-lang="en">We build mobile applications focused on personal health and business management, powered by cutting-edge technology.</span>
       <span data-lang="pt">Desenvolvemos aplicativos móveis focados em saúde pessoal e gestão empresarial, construídos com tecnologia de ponta.</span>
     </p>
+    <div class="download-box" id="descargar">
+      <p class="download-title"><span data-lang="es">Descarga MB Health Organizer</span><span data-lang="en">Download MB Health Organizer</span><span data-lang="pt">Baixe o MB Health Organizer</span></p>
+      <div class="store-row">
+        <a class="btn btn-primary store-android" href="https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord">Google Play (Android)</a>
+        <a class="btn btn-outline store-ios" href="https://apps.apple.com/app/id6770292497">App Store (iPhone)</a>
+      </div>
+    </div>
     <div>
-      <a href="#apps" class="btn btn-primary"><span data-lang="es">Ver nuestras apps</span><span data-lang="en">Our apps</span><span data-lang="pt">Nossos apps</span> ↓</a>
+      <a href="#apps" class="btn btn-ghost" style="margin-left:0;"><span data-lang="es">Ver nuestras apps</span><span data-lang="en">Our apps</span><span data-lang="pt">Nossos apps</span> ↓</a>
       <a href="#contact" class="btn btn-ghost"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span><span data-lang="pt">Contato</span></a>
     </div>
   </div>
@@ -218,6 +238,10 @@
         <div class="app-icon">💊</div>
         <div class="app-name">MB Apps — Health Organizer</div>
         <p class="app-desc"><span data-lang="es">Tu asistente personal de salud con inteligencia artificial.</span><span data-lang="en">Your AI-powered personal health assistant.</span><span data-lang="pt">Seu assistente pessoal de saúde com IA.</span></p>
+        <div class="store-row">
+          <a class="btn btn-primary store-android" href="https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord">Google Play (Android)</a>
+          <a class="btn btn-outline store-ios" href="https://apps.apple.com/app/id6770292497">App Store (iPhone)</a>
+        </div>
       </div>
     </div>
   </div>
@@ -435,16 +459,35 @@
   <div class="footer-brand">MB Apps S.A.S.</div>
   <div class="footer-right">
     <div class="footer-copy">© 2026 MB Apps S.A.S. — NIT 902052164-4</div>
-    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.5 · 27/10/2026 12:45 (hora Colombia)</div>
+    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.6 · 05/11/2026 16:50 (hora Colombia)</div>
   </div>
 </footer>
 
 <script>
   function setLang(lang) {
     document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang;
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+    var activo = document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]');
+    if (activo) { activo.classList.add('active'); }
   }
+
+  (function () {
+    // Idioma inicial segun el telefono (es, en o pt). Si es otro idioma, queda en español.
+    var idioma = ((navigator.language || 'es').toLowerCase()).slice(0, 2);
+    if (idioma === 'en' || idioma === 'pt') { setLang(idioma); }
+
+    // Pasar las etiquetas utm_* del enlace (ej. utm_source=facebook) a Google Play para medir instalaciones.
+    var params = new URLSearchParams(window.location.search);
+    var utm = [];
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
+      if (params.get(k)) { utm.push(k + '=' + params.get(k)); }
+    });
+    if (utm.length) {
+      var android = 'https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord&referrer=' + encodeURIComponent(utm.join('&'));
+      document.querySelectorAll('.store-android').forEach(function (a) { a.href = android; });
+    }
+  })();
 </script>
 </body>
 </html>
