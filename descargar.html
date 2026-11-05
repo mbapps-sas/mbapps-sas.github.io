@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
+    Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: descargar.html
+    VERSION: 1.0  |  ACTUALIZADO: 2026-11-05 14:30 (hora Colombia)
+    Cambios v1.0: pagina nueva "Descargar MB Health Organizer". Detecta el telefono:
+    Android -> Google Play, iPhone/iPad -> App Store, computador -> muestra los dos botones.
+    Pasa las etiquetas utm_* del enlace a Google Play (parametro referrer) para medir de donde llegan las instalaciones.
+    URL publica: https://mbapps.app/descargar
+    Enlaces: Google Play = com.montblancds.medicalrecord | App Store = id6770292497
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="google-site-verification" content="8WXvIhfnLJdHPbrdQQdoUI1rHgqnvHIR3WUtV7BpJyU" />
+  <meta name="robots" content="noindex" />
+  <title>MB Health Organizer — Descargar / Download / Baixar</title>
+  <style>
+    :root { --green: #00C896; --navy: #0A1628; --navy-mid: #112040; --white: #F5F9FF; --muted: #8BA3C4; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background-color: var(--navy); }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--navy); background-image: linear-gradient(160deg, #0A1628 0%, #112040 100%); background-repeat: no-repeat; background-size: 100% 100%; color: var(--white); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+    .box { max-width: 420px; width: 100%; }
+    h1 { font-size: 26px; margin-bottom: 8px; }
+    p { color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 28px; }
+    .btn { display: block; padding: 16px 24px; margin-bottom: 14px; border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; background: var(--green); color: var(--navy); }
+    .btn.ios { background: transparent; border: 1px solid var(--green); color: var(--green); }
+    .small { font-size: 12px; margin-top: 24px; margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>MB Health Organizer</h1>
+    <p id="txt">Tu salud y la de tu familia en un solo lugar, con Lia, tu asistente de salud. Elige tu tienda:</p>
+    <a id="btnAndroid" class="btn" href="https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord">Google Play (Android)</a>
+    <a id="btnIos" class="btn ios" href="https://apps.apple.com/app/id6770292497">App Store (iPhone)</a>
+    <p class="small">MB Apps S.A.S. · <a href="https://mbapps.app" style="color:#8BA3C4;">mbapps.app</a></p>
+  </div>
+
+  <script>
+    (function () {
+      var ANDROID = "https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord";
+      var IOS = "https://apps.apple.com/app/id6770292497";
+
+      // Idioma del texto segun el telefono (es, en o pt).
+      var idioma = ((navigator.language || "es").toLowerCase()).slice(0, 2);
+      var textos = {
+        es: "Tu salud y la de tu familia en un solo lugar, con Lia, tu asistente de salud. Elige tu tienda:",
+        en: "Your health and your family's health in one place, with Lia, your health assistant. Choose your store:",
+        pt: "Sua saúde e a da sua família em um só lugar, com a Lia, sua assistente de saúde. Escolha sua loja:"
+      };
+      if (textos[idioma]) { document.getElementById("txt").textContent = textos[idioma]; document.documentElement.lang = idioma; }
+
+      // Pasar las etiquetas utm_* del enlace (ej. utm_source=facebook) a Google Play.
+      var params = new URLSearchParams(window.location.search);
+      var utm = [];
+      ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (k) {
+        if (params.get(k)) { utm.push(k + "=" + params.get(k)); }
+      });
+      if (utm.length) { ANDROID = ANDROID + "&referrer=" + encodeURIComponent(utm.join("&")); }
+      document.getElementById("btnAndroid").href = ANDROID;
+      document.getElementById("btnIos").href = IOS;
+
+      // Detectar el telefono y mandar a la tienda que corresponde.
+      var ua = navigator.userAgent || "";
+      var esAndroid = /Android/i.test(ua);
+      var esIos = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      if (esAndroid) { window.location.replace(ANDROID); }
+      else if (esIos) { window.location.replace(IOS); }
+      // En computador no se redirige: quedan los dos botones a la vista.
+    })();
+  </script>
+</body>
+</html>
