@@ -4,7 +4,10 @@
   <!--
     SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
     Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: index.html
-    VERSION: 1.6  |  ACTUALIZADO: 2026-11-05 16:50 (hora Colombia)
+    VERSION: 1.7  |  ACTUALIZADO: 2026-11-05 16:57 (hora Colombia)
+    Cambios v1.7: Lia (lia.png) saludando a la derecha del inicio: flota suave, se mece y muestra el globo
+    "Hola, soy Lia" en ES/EN/PT. En celular queda mas pequeña bajo los botones. Sin movimiento si el telefono
+    tiene activada la opcion de reducir animaciones.
     Cambios v1.6: bloque de descarga al inicio de la pagina (y en la tarjeta de la app) con los botones Google Play
     (Android) y App Store (iPhone), en ES/EN/PT con los mismos botones de idioma del sitio. El idioma inicial sigue
     el idioma del telefono. Si el enlace trae etiquetas utm_* (anuncios), se pasan a Google Play (parametro referrer)
@@ -80,6 +83,17 @@
     .download-title { font-family: 'Syne', sans-serif; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
     .store-row { display: flex; flex-wrap: wrap; gap: 12px; }
     .app-card .store-row { margin-bottom: 8px; }
+
+    /* ── LIA (saludo en el inicio) ── */
+    .hero-lia { position: absolute; z-index: 1; right: 9vw; top: 50%; margin-top: -150px; width: 300px; animation: liaFloat 4.5s ease-in-out infinite; }
+    .hero-lia::before { content: ''; position: absolute; inset: 8% 5% 0 5%; z-index: 0; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,150,.28) 0%, rgba(0,200,150,0) 68%); }
+    .hero-lia img { position: relative; z-index: 1; display: block; width: 100%; height: auto; transform-origin: 50% 90%; animation: liaSway 3s ease-in-out infinite; }
+    .lia-bubble { position: absolute; z-index: 2; top: -18px; left: -34px; background: var(--white); color: var(--navy); font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; padding: 10px 18px; border-radius: 18px 18px 18px 4px; box-shadow: 0 6px 24px rgba(0,0,0,.35); opacity: 0; transform: scale(.6); transform-origin: 0 100%; animation: liaPop .6s ease-out 1s forwards; white-space: nowrap; }
+    @keyframes liaFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    @keyframes liaSway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    @keyframes liaPop { to { opacity: 1; transform: scale(1); } }
+    @media (max-width: 900px) { .hero-lia { position: relative; right: auto; top: auto; margin-top: 36px; width: 170px; } .lia-bubble { left: 120px; top: -14px; font-size: 13px; } .scroll-hint { display: none; } header { padding-bottom: 40px; } }
+    @media (prefers-reduced-motion: reduce) { .hero-lia, .hero-lia img { animation: none; } .lia-bubble { animation: none; opacity: 1; transform: none; } }
 
     /* ── SECTION BASE ── */
     section { padding: 100px 6vw; }
@@ -208,6 +222,10 @@
       <a href="#apps" class="btn btn-ghost" style="margin-left:0;"><span data-lang="es">Ver nuestras apps</span><span data-lang="en">Our apps</span><span data-lang="pt">Nossos apps</span> ↓</a>
       <a href="#contact" class="btn btn-ghost"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span><span data-lang="pt">Contato</span></a>
     </div>
+  </div>
+  <div class="hero-lia">
+    <div class="lia-bubble"><span data-lang="es">¡Hola, soy Lia!</span><span data-lang="en">Hi, I'm Lia!</span><span data-lang="pt">Olá, eu sou a Lia!</span></div>
+    <img src="lia.png" alt="Lia, la asistente de salud de MB Health Organizer" width="233" height="242" />
   </div>
   <div class="scroll-hint"><span data-lang="es">Explorar</span><span data-lang="en">Explore</span><span data-lang="pt">Explorar</span></div>
 </header>
@@ -459,7 +477,7 @@
   <div class="footer-brand">MB Apps S.A.S.</div>
   <div class="footer-right">
     <div class="footer-copy">© 2026 MB Apps S.A.S. — NIT 902052164-4</div>
-    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.6 · 05/11/2026 16:50 (hora Colombia)</div>
+    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.7 · 05/11/2026 16:57 (hora Colombia)</div>
   </div>
 </footer>
 
