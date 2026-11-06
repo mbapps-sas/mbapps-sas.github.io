@@ -4,7 +4,9 @@
   <!--
     SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
     Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: index.html
-    VERSION: 1.8  |  ACTUALIZADO: 2026-11-05 16:58 (hora Colombia)
+    VERSION: 1.9  |  ACTUALIZADO: 2026-11-06 18:35 (hora Colombia)
+    Cambios v1.9: si el enlace trae utm_campaign (anuncios), el boton App Store (iPhone) usa el enlace de campana de Apple
+    (pt=128917033 y ct=<utm_campaign>) para medir en App Store Connect las instalaciones que llegan del anuncio. Sin utm, el boton queda igual.
     Cambios v1.8: el globo "Hola, soy Lia" se mueve mas a la derecha, sobre la cabeza de Lia.
     Cambios v1.7: Lia (lia.png) saludando a la derecha del inicio: flota suave, se mece y muestra el globo
     "Hola, soy Lia" en ES/EN/PT. En celular queda mas pequeña bajo los botones. Sin movimiento si el telefono
@@ -478,7 +480,7 @@
   <div class="footer-brand">MB Apps S.A.S.</div>
   <div class="footer-right">
     <div class="footer-copy">© 2026 MB Apps S.A.S. — NIT 902052164-4</div>
-    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.8 · 05/11/2026 16:58 (hora Colombia)</div>
+    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.9 · 06/11/2026 18:35 (hora Colombia)</div>
   </div>
 </footer>
 
@@ -505,6 +507,13 @@
     if (utm.length) {
       var android = 'https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord&referrer=' + encodeURIComponent(utm.join('&'));
       document.querySelectorAll('.store-android').forEach(function (a) { a.href = android; });
+    }
+
+    // Enlace de campana de Apple (App Store Connect > Analisis > Adquisicion > Campanas): mide instalaciones de iPhone.
+    var campana = params.get('utm_campaign');
+    if (campana) {
+      var ios = 'https://apps.apple.com/app/apple-store/id6770292497?pt=128917033&ct=' + encodeURIComponent(campana.slice(0, 40)) + '&mt=8';
+      document.querySelectorAll('.store-ios').forEach(function (a) { a.href = ios; });
     }
   })();
 </script>
