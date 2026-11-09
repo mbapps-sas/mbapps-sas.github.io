@@ -4,7 +4,11 @@
   <!--
     SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
     Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: index.html
-    VERSION: 1.9  |  ACTUALIZADO: 2026-11-06 18:35 (hora Colombia)
+    VERSION: 2.0  |  ACTUALIZADO: 2026-11-09 09:05 (hora Colombia)
+    Cambios v2.0: medicion del sitio con Google Analytics (flujo web "MedicalRecordApp Web", ID G-CFMZ1E9MNW, misma propiedad
+    de la app). Mide visitas (con el utm de la campana) y dos eventos propios: clic_google_play y clic_app_store, con el
+    parametro "lugar" (inicio o tarjeta) y "idioma". Sin senales de Google ni personalizacion de anuncios. La Politica de
+    Privacidad (ES/EN/PT) agrega la medicion del sitio web (seccion 1 y seccion 2) y la fecha pasa al 9 de noviembre de 2026.
     Cambios v1.9: si el enlace trae utm_campaign (anuncios), el boton App Store (iPhone) usa el enlace de campana de Apple
     (pt=128917033 y ct=<utm_campaign>) para medir en App Store Connect las instalaciones que llegan del anuncio. Sin utm, el boton queda igual.
     Cambios v1.8: el globo "Hola, soy Lia" se mueve mas a la derecha, sobre la cabeza de Lia.
@@ -34,6 +38,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="google-site-verification" content="8WXvIhfnLJdHPbrdQQdoUI1rHgqnvHIR3WUtV7BpJyU" />
+  <!-- Google Analytics (medicion del sitio web) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CFMZ1E9MNW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-CFMZ1E9MNW', { allow_google_signals: false, allow_ad_personalization_signals: false });
+  </script>
   <title>MB Apps S.A.S. — Mobile Health & Business Apps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -282,7 +294,7 @@
 
         <!-- ESPAÑOL -->
         <div data-lang="es">
-          <p class="policy-date">Última actualización: 27 de octubre de 2026</p>
+          <p class="policy-date">Última actualización: 9 de noviembre de 2026</p>
           <p>MB Apps S.A.S. ("nosotros") es la empresa responsable de la aplicación MB Health Organizer ("la app"). Esta política explica qué información recopilamos, para qué la usamos y cómo puedes controlarla.</p>
 
           <h4>1. Información que recopilamos</h4>
@@ -291,6 +303,7 @@
             <li>La información de salud que tú registras en la app: citas médicas, exámenes, vacunas, medicamentos y los archivos o imágenes que decidas adjuntar.</li>
             <li>Los mensajes que escribes al asistente de inteligencia artificial de la app.</li>
             <li>Datos de uso de la app: cuándo abres y cierras la app y cuánto tiempo la usas, las pantallas que visitas, la versión de la app, el tipo de dispositivo, el sistema operativo y el idioma, junto con un identificador técnico de la instalación. Nunca se mide el contenido de tus registros de salud ni de tus mensajes.</li>
+            <li>Datos de visita a este sitio web (mbapps.app): cuando lo visitas medimos, con Google Analytics, las páginas que ves, de qué enlace o campaña llegaste, el tipo de dispositivo, el navegador, el idioma, una ubicación aproximada deducida de tu dirección IP y si pulsas los botones de descarga de Google Play o App Store. No usamos estos datos para publicidad personalizada ni los relacionamos con tu cuenta ni con tu información de salud.</li>
             <li>Información de tu suscripción: tu plan y el estado de tu compra. Los pagos los procesan Apple o Google Play y RevenueCat; nosotros no vemos los datos de tu tarjeta.</li>
             <li>Datos técnicos: informes de errores de la app (Firebase Crashlytics) y una ubicación aproximada, deducida de tu dirección IP, que no es tu ubicación exacta.</li>
             <li>Voz: cuando dictas un mensaje, la transcripción la hace el servicio de reconocimiento de voz de tu teléfono (Apple o Google, según tu dispositivo); MB Apps no recibe ni guarda tu audio, solo el texto que aparece en el chat. Si tu plan incluye la voz de Lia, el texto de su respuesta se envía a Google Text-to-Speech para generar el audio; ese audio se guarda en tu cuenta y se elimina cuando eliminas tu cuenta.</li>
@@ -298,7 +311,7 @@
           </ul>
 
           <h4>2. Para qué usamos la información</h4>
-          <p>Usamos tu información únicamente para hacer funcionar la app: guardar y organizar tus registros, responder tus consultas con el asistente, crear tus recordatorios y gestionar tu suscripción. Los datos se almacenan de forma segura en Firebase (Google Cloud). También usamos los datos de uso para entender cómo se utiliza la app y mejorarla, mediante Google Analytics para Firebase.</p>
+          <p>Usamos tu información únicamente para hacer funcionar la app: guardar y organizar tus registros, responder tus consultas con el asistente, crear tus recordatorios y gestionar tu suscripción. Los datos se almacenan de forma segura en Firebase (Google Cloud). También usamos los datos de uso para entender cómo se utiliza la app y mejorarla, mediante Google Analytics para Firebase. Los datos de visita de este sitio web se usan solo para saber cuántas personas llegan al sitio y cuántas pulsan los botones de descarga, y así mejorar la página.</p>
 
           <h4>3. Google Calendar (datos de usuario de Google)</h4>
           <p>Vincular Google Calendar es opcional y solo ocurre cuando tú lo autorizas. La app solicita únicamente el permiso <strong>https://www.googleapis.com/auth/calendar.events</strong> y lo usa solo para:</p>
@@ -344,7 +357,7 @@
 
         <!-- ENGLISH -->
         <div data-lang="en">
-          <p class="policy-date">Last updated: October 27, 2026</p>
+          <p class="policy-date">Last updated: November 9, 2026</p>
           <p>MB Apps S.A.S. ("we") is the company responsible for the MB Health Organizer application ("the app"). This policy explains what information we collect, what we use it for, and how you can control it.</p>
 
           <h4>1. Information we collect</h4>
@@ -353,6 +366,7 @@
             <li>The health information you enter in the app: medical appointments, exams, vaccines, medications, and any files or images you choose to attach.</li>
             <li>The messages you write to the app's artificial intelligence assistant.</li>
             <li>App usage data: when you open and close the app and how long you use it, the screens you visit, the app version, device type, operating system and language, together with a technical identifier of the installation. The content of your health records or your messages is never measured.</li>
+            <li>Visit data for this website (mbapps.app): when you visit it we measure, with Google Analytics, the pages you view, the link or campaign you came from, device type, browser, language, an approximate location inferred from your IP address, and whether you tap the Google Play or App Store download buttons. We do not use this data for personalized advertising and we do not link it to your account or your health information.</li>
             <li>Subscription information: your plan and the status of your purchase. Payments are processed by Apple or Google Play and RevenueCat; we do not see your card details.</li>
             <li>Technical data: app error reports (Firebase Crashlytics) and an approximate location, inferred from your IP address, which is not your exact location.</li>
             <li>Voice: when you dictate a message, the transcription is done by your phone's speech recognition service (Apple or Google, depending on your device); MB Apps does not receive or store your audio, only the text that appears in the chat. If your plan includes Lia's voice, the text of her answer is sent to Google Text-to-Speech to generate the audio; that audio is stored in your account and is deleted when you delete your account.</li>
@@ -360,7 +374,7 @@
           </ul>
 
           <h4>2. How we use the information</h4>
-          <p>We use your information only to make the app work: to store and organize your records, answer your questions through the assistant, create your reminders and manage your subscription. Data is securely stored in Firebase (Google Cloud). We also use usage data to understand how the app is used and to improve it, through Google Analytics for Firebase.</p>
+          <p>We use your information only to make the app work: to store and organize your records, answer your questions through the assistant, create your reminders and manage your subscription. Data is securely stored in Firebase (Google Cloud). We also use usage data to understand how the app is used and to improve it, through Google Analytics for Firebase. Visit data for this website is used only to know how many people reach the site and how many tap the download buttons, so we can improve the page.</p>
 
           <h4>3. Google Calendar (Google user data)</h4>
           <p>Linking Google Calendar is optional and only happens when you authorize it. The app requests only the <strong>https://www.googleapis.com/auth/calendar.events</strong> permission and uses it only to:</p>
@@ -406,7 +420,7 @@
 
         <!-- PORTUGUÊS -->
         <div data-lang="pt">
-          <p class="policy-date">Última atualização: 27 de outubro de 2026</p>
+          <p class="policy-date">Última atualização: 9 de novembro de 2026</p>
           <p>A MB Apps S.A.S. ("nós") é a empresa responsável pelo aplicativo MB Health Organizer ("o app"). Esta política explica quais informações coletamos, para que as usamos e como você pode controlá-las.</p>
 
           <h4>1. Informações que coletamos</h4>
@@ -415,6 +429,7 @@
             <li>As informações de saúde que você registra no app: consultas médicas, exames, vacinas, medicamentos e os arquivos ou imagens que decidir anexar.</li>
             <li>As mensagens que você escreve ao assistente de inteligência artificial do app.</li>
             <li>Dados de uso do app: quando você abre e fecha o app e por quanto tempo o usa, as telas que visita, a versão do app, o tipo de dispositivo, o sistema operacional e o idioma, junto com um identificador técnico da instalação. O conteúdo dos seus registros de saúde ou das suas mensagens nunca é medido.</li>
+            <li>Dados de visita a este site (mbapps.app): quando você o visita, medimos, com o Google Analytics, as páginas que você vê, de qual link ou campanha você veio, o tipo de dispositivo, o navegador, o idioma, uma localização aproximada deduzida do seu endereço IP e se você toca nos botões de download do Google Play ou da App Store. Não usamos esses dados para publicidade personalizada nem os relacionamos com a sua conta ou com as suas informações de saúde.</li>
             <li>Informações da sua assinatura: seu plano e o status da sua compra. Os pagamentos são processados pela Apple ou Google Play e pela RevenueCat; nós não vemos os dados do seu cartão.</li>
             <li>Dados técnicos: relatórios de erros do app (Firebase Crashlytics) e uma localização aproximada, deduzida do seu endereço IP, que não é a sua localização exata.</li>
             <li>Voz: quando você dita uma mensagem, a transcrição é feita pelo serviço de reconhecimento de voz do seu telefone (Apple ou Google, conforme o seu dispositivo); a MB Apps não recebe nem guarda o seu áudio, apenas o texto que aparece no chat. Se o seu plano inclui a voz da Lia, o texto da resposta dela é enviado ao Google Text-to-Speech para gerar o áudio; esse áudio fica guardado na sua conta e é excluído quando você exclui a conta.</li>
@@ -422,7 +437,7 @@
           </ul>
 
           <h4>2. Para que usamos as informações</h4>
-          <p>Usamos suas informações apenas para fazer o app funcionar: guardar e organizar seus registros, responder suas perguntas com o assistente, criar seus lembretes e gerenciar sua assinatura. Os dados são armazenados com segurança no Firebase (Google Cloud). Também usamos os dados de uso para entender como o app é utilizado e melhorá-lo, por meio do Google Analytics para Firebase.</p>
+          <p>Usamos suas informações apenas para fazer o app funcionar: guardar e organizar seus registros, responder suas perguntas com o assistente, criar seus lembretes e gerenciar sua assinatura. Os dados são armazenados com segurança no Firebase (Google Cloud). Também usamos os dados de uso para entender como o app é utilizado e melhorá-lo, por meio do Google Analytics para Firebase. Os dados de visita deste site são usados apenas para saber quantas pessoas chegam ao site e quantas tocam nos botões de download, e assim melhorar a página.</p>
 
           <h4>3. Google Agenda (dados de usuário do Google)</h4>
           <p>Vincular o Google Agenda é opcional e só acontece quando você autoriza. O app solicita apenas a permissão <strong>https://www.googleapis.com/auth/calendar.events</strong> e a usa somente para:</p>
@@ -480,7 +495,7 @@
   <div class="footer-brand">MB Apps S.A.S.</div>
   <div class="footer-right">
     <div class="footer-copy">© 2026 MB Apps S.A.S. — NIT 902052164-4</div>
-    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v1.9 · 06/11/2026 18:35 (hora Colombia)</div>
+    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v2.0 · 09/11/2026 09:05 (hora Colombia)</div>
   </div>
 </footer>
 
@@ -515,6 +530,18 @@
       var ios = 'https://apps.apple.com/app/apple-store/id6770292497?pt=128917033&ct=' + encodeURIComponent(campana.slice(0, 40)) + '&mt=8';
       document.querySelectorAll('.store-ios').forEach(function (a) { a.href = ios; });
     }
+
+    // Medicion de clics en los botones de descarga (Google Analytics). Si Analytics no carga, no pasa nada.
+    function medirClic(evento) {
+      return function () {
+        try {
+          var lugar = this.closest('.download-box') ? 'inicio' : 'tarjeta';
+          gtag('event', evento, { lugar: lugar, idioma: document.documentElement.lang, transport_type: 'beacon' });
+        } catch (e) { /* sin medicion */ }
+      };
+    }
+    document.querySelectorAll('.store-android').forEach(function (a) { a.addEventListener('click', medirClic('clic_google_play')); });
+    document.querySelectorAll('.store-ios').forEach(function (a) { a.addEventListener('click', medirClic('clic_app_store')); });
   })();
 </script>
 </body>
