@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- MB Apps S.A.S. — /go/ v1.0 (11 nov 2026): puerta de entrada para los anuncios. Sin contenido propio:
+     detecta el telefono y lo manda directo a Google Play (Android) o App Store (iPhone/iPad),
+     conservando las etiquetas utm_* para medir instalaciones. En computador muestra los dos botones. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MB Health Organizer</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+         font-family: Arial, Helvetica, sans-serif; background: #071E45; color: #fff; text-align: center; padding: 24px; box-sizing: border-box; }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  p { margin: 0 0 20px; font-size: 16px; opacity: .9; }
+  a.btn { display: block; margin: 8px auto; padding: 14px 22px; width: 240px; border-radius: 10px; background: #fff; color: #071E45;
+          font-weight: bold; text-decoration: none; font-size: 16px; }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CFMZ1E9MNW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-CFMZ1E9MNW');
+</script>
+</head>
+<body>
+  <h1>MB Health Organizer</h1>
+  <p id="msg">Abriendo la tienda…</p>
+  <div id="botones" style="display:none">
+    <a class="btn" id="b-android" href="https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord">Google Play</a>
+    <a class="btn" id="b-ios" href="https://apps.apple.com/app/apple-store/id6770292497">App Store</a>
+  </div>
+  <noscript>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord">Google Play</a>
+    <a class="btn" href="https://apps.apple.com/app/apple-store/id6770292497">App Store</a>
+  </noscript>
+<script>
+(function () {
+  var idioma = ((navigator.language || 'es').toLowerCase()).slice(0, 2);
+  var textos = { es: 'Abriendo la tienda…', en: 'Opening the store…', pt: 'Abrindo a loja…' };
+  document.getElementById('msg').textContent = textos[idioma] || textos.es;
+  document.documentElement.lang = textos[idioma] ? idioma : 'es';
+
+  // Etiquetas utm_* del enlace del anuncio.
+  var params = new URLSearchParams(window.location.search);
+  var utm = [];
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
+    if (params.get(k)) { utm.push(k + '=' + params.get(k)); }
+  });
+  var campana = params.get('utm_campaign') || 'tienda_directa';
+
+  var android = 'https://play.google.com/store/apps/details?id=com.montblancds.medicalrecord' +
+    (utm.length ? '&referrer=' + encodeURIComponent(utm.join('&')) : '');
+  var ios = 'https://apps.apple.com/app/apple-store/id6770292497?pt=128917033&ct=' +
+    encodeURIComponent(campana.slice(0, 40)) + '&mt=8';
+
+  document.getElementById('b-android').href = android;
+  document.getElementById('b-ios').href = ios;
+
+  var ua = navigator.userAgent || '';
+  var esAndroid = /android/i.test(ua);
+  var esIOS = /iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+  var destino = esAndroid ? android : (esIOS ? ios : null);
+  var sistema = esAndroid ? 'android' : (esIOS ? 'ios' : 'otro');
+
+  try { gtag('event', 'puerta_tienda', { sistema: sistema, campana: campana, transport_type: 'beacon' }); } catch (e) { /* sin medicion */ }
+
+  if (destino) {
+    setTimeout(function () { window.location.replace(destino); }, 300);
+  } else {
+    document.getElementById('msg').textContent = '';
+    document.getElementById('botones').style.display = 'block';
+  }
+})();
+</script>
+</body>
+</html>
