@@ -4,12 +4,13 @@
   <!--
     SITIO WEB CORPORATIVO — MB Apps S.A.S. (https://mbapps.app)
     Repositorio: mbapps-sas/mbapps-sas.github.io  |  Archivo: index.html
-    VERSION: 2.5  |  ACTUALIZADO: 2026-11-12 09:30 (hora Colombia)
+    VERSION: 2.5  |  ACTUALIZADO: 2026-11-12 09:05 (hora Colombia)
     Cambios v2.5: letra mas grande y legible en todo el sitio (texto base 16 px, politica y terminos 17 px con interlineado 1,75, titulos
     de la politica 19 px y 26 px, botones 16 px); el inicio ya no ocupa toda la pantalla (altura entre 560 y 760 px, sin el espacio vacio
     de abajo); en pantallas anchas la politica se muestra en 2 columnas para que las lineas no queden demasiado largas;
     se quita el texto "Explorar" del inicio (tapaba los botones); en celular se corrige el desborde lateral (la pagina se movia
-    hacia los lados por los textos largos de la politica).
+    hacia los lados por los textos largos de la politica); se quita el cuadro del correo de "Contacto y Legal" (el correo ya aparece en la
+    Politica de Privacidad) y los Terminos de Uso ocupan ese lugar, arriba y a todo el ancho; en celular el orden es Politica y luego Terminos.
     Cambios v2.4: "Contacto y Legal" se reorganiza: arriba el correo (izquierda) y los Terminos de Uso (derecha); debajo la Politica
     de Privacidad a todo el ancho. En celular todo queda en una columna (correo, politica, terminos).
     Cambios v2.3: "Contacto y Legal" pasa a 3 columnas en pantallas grandes (barra de contacto, Politica de Privacidad y Terminos de Uso);
@@ -177,11 +178,10 @@
     #contact { background: var(--navy); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
     .legal-wrap { display: contents; }
-    .contact-info, .privacy-box { min-width: 0; overflow-wrap: anywhere; }
-    .contact-info { grid-column: 1; grid-row: 1; }
-    #eula { grid-column: 2; grid-row: 1; }
+    .privacy-box { min-width: 0; overflow-wrap: anywhere; }
+    #eula { grid-column: 1 / -1; grid-row: 1; }
     #privacy { grid-column: 1 / -1; grid-row: 2; }
-    @media (max-width: 768px) { .contact-info, #eula, #privacy { grid-column: 1; grid-row: auto; } }
+    @media (max-width: 768px) { #eula, #privacy { grid-column: 1; grid-row: auto; } }
     .contact-info { display: flex; flex-direction: column; gap: 20px; }
     .contact-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,.06); }
     .contact-icon { font-size: 20px; flex-shrink: 0; }
@@ -308,10 +308,6 @@
 <section id="contact">
   <h2><span data-lang="es">Contacto y Legal</span><span data-lang="en">Contact & Legal</span><span data-lang="pt">Contato e Legal</span></h2>
   <div class="contact-grid">
-    <div class="contact-info">
-      <div class="contact-item"><div class="contact-icon">📧</div><div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:ceo@mbapps.app">ceo@mbapps.app</a></div></div></div>
-    </div>
-
     <div class="legal-wrap">
       <!-- Política de Privacidad -->
       <div class="privacy-box" id="privacy">
@@ -538,7 +534,7 @@
   <div class="footer-brand">MB Apps S.A.S.</div>
   <div class="footer-right">
     <div class="footer-copy">© 2026 MB Apps S.A.S. — NIT 902052164-4</div>
-    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v2.5 · 12/11/2026 09:30 (hora Colombia)</div>
+    <div class="footer-version">Sitio web corporativo MB Apps S.A.S. · v2.5 · 12/11/2026 09:05 (hora Colombia)</div>
   </div>
 </footer>
 
